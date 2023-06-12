@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:webullish/controller/onboarding_controller/onboarding_controller.dart';
-import 'package:webullish/home.dart';
 import 'package:webullish/model/onboarding_model/content_model.dart';
 import 'package:webullish/utils/app_colors.dart';
+import 'package:webullish/view/pages/auth/login_screen.dart';
+import 'package:webullish/view/pages/auth/login_screen.dart';
+import 'package:webullish/view/pages/auth/login_screen.dart';
 
 import '../../widgets/my_text.dart';
 import '../../widgets/onboarding_button.dart';
@@ -20,96 +22,102 @@ class OnBoardingScreen extends StatelessWidget {
       init: OnBoardingController(),
         builder: (controller) => Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 44.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView.builder(
-                controller: controller.pageController,
-                onPageChanged: (int index){
-                  controller.currentIndex = index;
-                  controller.update();
-                },
-                  itemCount: contents.length,
-                  itemBuilder: (_,index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SvgPicture.asset(contents[index].image,
-                          ),
-                          MyText(
-                            text: contents[index].title,
-                            color: AppColors.ancientColor,
-                            size: 22,
-                            fontWeight: FontWeight.w700,
-                          ),
-                          Expanded(
-                            child: MyText(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 44.0),
+          child: Column(
+            children: [
+              SizedBox(
+                // height: MediaQuery.of(context).size.height,
+                height: MediaQuery.of(context).size.height * .85,
+                child: PageView.builder(
+                  controller: controller.pageController,
+                  onPageChanged: (int index){
+                    controller.currentIndex = index;
+                    controller.update();
+                  },
+                    itemCount: contents.length,
+                    itemBuilder: (_,index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: SvgPicture.asset(contents[index].image,
+                              ),
+                            ),
+                            MyText(
+                              text: contents[index].title,
+                              color: AppColors.ancientColor,
+                              size: 22,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            const SizedBox(height: 13),
+                            MyText(
                               text: contents[index].description,
                               color: AppColors.whiteColor,
                               size: 18,
                               fontWeight: FontWeight.w400,
                             ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-            ),
-              Column(
-                children: [
 
-                ],
+                          ],
+                        ),
+                      );
+                    }),
               ),
               Visibility(
                 visible: controller.currentIndex == contents.length - 1 ? true :false,
-              child: MyButton(
-                  onPressed: (){}, text:'startquickly !',
+                child: MyButton(
+                  onPressed: (){
+                    controller.saveOnboardingStatus(true);
+                    Get.offAll(LoginScreen());
+                  }, text:'startquickly !',
                   color: AppColors.whiteColor,
-                 fontWeight: FontWeight.w700,
-                size: 22,
-         ),
-            ) ,
+                  fontWeight: FontWeight.w700,
+                  size: 22,
+                ),
+              ) ,
               const SizedBox(height: 20),
               Visibility(
                 visible: controller.currentIndex == contents.length - 1 ? true :false,
-              child: MyButton(
-                  onPressed: (){}, text:'Log in as a guest',
+                child: MyButton(
+                  onPressed: (){
+
+                  }, text:'Log in as a guest',
                   color: AppColors.primaryColor,
-                 fontWeight: FontWeight.w700,
-                size: 22,
-         ),
-            ) ,
-            const SizedBox(height: 14),
-             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(onPressed: (){
-                  controller.saveOnboardingStatus(true);
-                Get.offAll(  HomeScreen());
-                }, child: MyText(
-                  text:'Skip',
-                  color: AppColors.whiteColor,
-                  size: 20,
                   fontWeight: FontWeight.w700,
-                )),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(contents.length, (index) => buildDot(index,context),
+                  size: 22,
+                ),
+              ) ,
+              const SizedBox(height: 14),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(onPressed: (){
+                    controller.saveOnboardingStatus(true);
+                    Get.offAll(LoginScreen());
+                  }, child: MyText(
+                    text:'Skip',
+                    color: AppColors.whiteColor,
+                    size: 20,
+                    fontWeight: FontWeight.w700,
+                  )),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(contents.length, (index) => buildDot(index,context),
+                      ),
                     ),
                   ),
-                ),
-                buildDot2(controller.currentIndex,context),
+                  buildDot2(controller.currentIndex,context),
 
-              ],
-            ),
+                ],
+              )
 
-          ],
+            ],
+          ),
         ),
       ),
     ));
@@ -130,6 +138,7 @@ class OnBoardingScreen extends StatelessWidget {
     if (index == contents.length - 1) {
       return TextButton(onPressed: (){
         controller.saveOnboardingStatus(true);
+        Get.offAll(LoginScreen());
       }, child: MyText(
         text:'Done',
         color: AppColors.ancientColor,

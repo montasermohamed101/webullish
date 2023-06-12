@@ -1,13 +1,15 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:webullish/utils/app_colors.dart';
 
 class MyTextFormField extends StatelessWidget {
   TextEditingController controller = TextEditingController();
   final Function validator;
   TextInputType? keyboardType;
   int? maxLines;
-  String? labelText;
+  // String? labelText;
+  String? hintText;
   Widget? suffixIcon;
   bool? obscureText;
   MyTextFormField({
@@ -15,7 +17,8 @@ class MyTextFormField extends StatelessWidget {
     required this.controller,
     required this.validator,
     required this.keyboardType,
-    required this.labelText,
+    // required this.labelText,
+    required this.hintText,
     this.suffixIcon,
     this.obscureText,
     this.maxLines,
@@ -24,6 +27,11 @@ class MyTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: TextStyle(
+        color: AppColors.whiteColor,
+        fontFamily: 'Poppins',
+        fontWeight: FontWeight.bold,
+      ),
       maxLines: maxLines,
       controller: controller,
       cursorColor: Colors.black,
@@ -32,19 +40,20 @@ class MyTextFormField extends StatelessWidget {
       textAlignVertical: TextAlignVertical.center,
       validator: (value) => validator(value),
       decoration: InputDecoration(
-        labelText: labelText,
+        // labelText: labelText,
         suffixIcon: suffixIcon,
-        // hintText: hintText,
+        hintText: hintText,
         contentPadding:
         const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         // contentPadding: EdgeInsets.all(15),
         //contentPadding: const EdgeInsets.from
         //(20.0, 20.0, 20.0, 5.0),
         // alignLabelWithHint: true,
-        hintStyle: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: Color(0xffC4C4C4),
+        hintStyle:  TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          fontFamily: 'Poppins',
+          color: AppColors.grey,
         ),
         errorStyle:
         Theme.of(context).textTheme.labelSmall?.copyWith(color: Colors.red),
@@ -52,29 +61,29 @@ class MyTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
         //fillColor: Colors.grey.shade200,
-        fillColor: Colors.white,
+        fillColor: Colors.transparent,
         filled: true,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(9.0),
           //borderSide: const BorderSide(color: Colors.white),
-          borderSide: const BorderSide(
-              color: Color.fromRGBO(180, 186, 190, 0.5), width: 1),
+          borderSide:  BorderSide(
+              color: AppColors.ancientColor, width: 2),
 
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: const BorderSide(
-              color: Color.fromRGBO(180, 186, 190, 0.5), width: 1),
+           borderSide:  BorderSide(
+              color: AppColors.ancientColor, width: 2),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: const BorderSide(
-              color: Color.fromRGBO(180, 186, 190, 0.5), width: 1),
+           borderSide:  BorderSide(
+              color: AppColors.ancientColor, width: 2),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: const BorderSide(
-              color: Color.fromRGBO(180, 186, 190, 0.5), width: 1),
+           borderSide:  BorderSide(
+              color: AppColors.ancientColor, width: 2),
         ),
       ),
     );
