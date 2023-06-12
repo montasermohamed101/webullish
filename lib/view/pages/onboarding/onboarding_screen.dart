@@ -20,95 +20,96 @@ class OnBoardingScreen extends StatelessWidget {
       init: OnBoardingController(),
         builder: (controller) => Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 44.0),
-          child: Column(
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.8,
-                child: PageView.builder(
-                  controller: controller.pageController,
-                  onPageChanged: (int index){
-                    controller.currentIndex = index;
-                    controller.update();
-                  },
-                    itemCount: contents.length,
-                    itemBuilder: (_,index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SvgPicture.asset(contents[index].image,
-                              height: MediaQuery.of(context).size.height * 0.4,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 44.0),
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView.builder(
+                controller: controller.pageController,
+                onPageChanged: (int index){
+                  controller.currentIndex = index;
+                  controller.update();
+                },
+                  itemCount: contents.length,
+                  itemBuilder: (_,index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SvgPicture.asset(contents[index].image,
+                          ),
+                          MyText(
+                            text: contents[index].title,
+                            color: AppColors.ancientColor,
+                            size: 22,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          Expanded(
+                            child: MyText(
+                              text: contents[index].description,
+                              color: AppColors.whiteColor,
+                              size: 18,
+                              fontWeight: FontWeight.w400,
                             ),
-                            MyText(
-                              text: contents[index].title,
-                              color: AppColors.ancientColor,
-                              size: 22,
-                              fontWeight: FontWeight.w700,
-                            ),
-                            Expanded(
-                              child: MyText(
-                                text: contents[index].description,
-                                color: AppColors.whiteColor,
-                                size: 18,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    }),
-              ),
-                Visibility(
-                  visible: controller.currentIndex == contents.length - 1 ? true :false,
-                child: OnBoardingButton(
-                    onPressed: (){}, text:'startquickly !',
-                    color: AppColors.whiteColor,
-                   fontWeight: FontWeight.w700,
-                  size: 22,
-           ),
-              ) ,
-                const SizedBox(height: 20),
-                Visibility(
-                  visible: controller.currentIndex == contents.length - 1 ? true :false,
-                child: OnBoardingButton(
-                    onPressed: (){}, text:'Log in as a guest',
-                    color: AppColors.primaryColor,
-                   fontWeight: FontWeight.w700,
-                  size: 22,
-           ),
-              ) ,
-              const SizedBox(height: 14),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(onPressed: (){
-                    controller.saveOnboardingStatus(true);
-                  Get.offAll(  HomeScreen());
-                  }, child: MyText(
-                    text:'Skip',
-                    color: AppColors.whiteColor,
-                    size: 20,
-                    fontWeight: FontWeight.w700,
-                  )),
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(contents.length, (index) => buildDot(index,context),
+                          ),
+                        ],
                       ),
-                    ),
-                  ),
-                  buildDot2(controller.currentIndex,context),
+                    );
+                  }),
+            ),
+              Column(
+                children: [
 
                 ],
               ),
+              Visibility(
+                visible: controller.currentIndex == contents.length - 1 ? true :false,
+              child: MyButton(
+                  onPressed: (){}, text:'startquickly !',
+                  color: AppColors.whiteColor,
+                 fontWeight: FontWeight.w700,
+                size: 22,
+         ),
+            ) ,
+              const SizedBox(height: 20),
+              Visibility(
+                visible: controller.currentIndex == contents.length - 1 ? true :false,
+              child: MyButton(
+                  onPressed: (){}, text:'Log in as a guest',
+                  color: AppColors.primaryColor,
+                 fontWeight: FontWeight.w700,
+                size: 22,
+         ),
+            ) ,
+            const SizedBox(height: 14),
+             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(onPressed: (){
+                  controller.saveOnboardingStatus(true);
+                Get.offAll(  HomeScreen());
+                }, child: MyText(
+                  text:'Skip',
+                  color: AppColors.whiteColor,
+                  size: 20,
+                  fontWeight: FontWeight.w700,
+                )),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(contents.length, (index) => buildDot(index,context),
+                    ),
+                  ),
+                ),
+                buildDot2(controller.currentIndex,context),
 
-            ],
-          ),
+              ],
+            ),
+
+          ],
         ),
       ),
     ));

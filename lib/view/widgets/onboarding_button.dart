@@ -5,20 +5,21 @@ import 'package:webullish/utils/app_colors.dart';
 import 'package:webullish/view/widgets/my_text.dart';
 
 
-class OnBoardingButton extends StatelessWidget {
+class MyButton extends StatelessWidget {
   String text;
   double size;
+  Color? buttonColor;
   Function() onPressed;
   FontWeight? fontWeight;
   Color color;
-  OnBoardingButton(
-      {required this.text, required this.onPressed, required this.size,this.fontWeight,required this.color});
+  MyButton(
+      {required this.text, required this.onPressed, required this.size,this.fontWeight,required this.color, this.buttonColor});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.ancientColor,
+          backgroundColor: buttonColor ?? AppColors.ancientColor,
           minimumSize: Size(double.infinity, 51),
         ),
         onPressed: onPressed,
