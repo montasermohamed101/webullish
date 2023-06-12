@@ -54,18 +54,21 @@ class ForgotPasswordScreen extends StatelessWidget {
                       suffixIcon: Icon(Icons.email_outlined,color: AppColors.ancientColor,),
                     ),
                     const SizedBox(height: 122),
-                    MyButton(text: 'Forgot Password?',
-                      onPressed: (){
-                        if(controller.formKey.currentState!.validate()){
-                          controller.formKey.currentState!.save();
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 60.0),
+                      child: MyButton(text: 'Forgot Password?',
+                        onPressed: (){
+                          if(controller.formKey.currentState!.validate()){
+                            controller.formKey.currentState!.save();
 
-                        }else{
+                          }else{
 
-                        }
-                      },
-                      size: 22,
-                      color: AppColors.whiteColor,
-                      fontWeight: FontWeight.w700,
+                          }
+                        },
+                        size: 22,
+                        color: AppColors.whiteColor,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ],
                 ),
