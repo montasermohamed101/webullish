@@ -9,6 +9,9 @@ class AppColors{
   static Color brownColor = const Color(0xff2A2936);
   static Color blueBrownColor = const Color(0xff182946);
   static Color subscriptionColor = const Color(0xff230B34);
+  static Color navColor = const Color(0xff062029);
+  static Color navSelectedColor = const Color(0xffFFF50A);
+  static Color navUnSelectedColor = const Color(0xffBDBDBD);
   static Color grey = const Color(0xffD9D9D9);
   static Color blue = const Color(0xff1400FF);
   static Color facebookBackground = const Color(0xff3B5999);

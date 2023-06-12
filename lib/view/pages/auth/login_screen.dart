@@ -10,6 +10,8 @@ import 'package:webullish/view/widgets/my_text.dart';
 import 'package:webullish/view/widgets/my_text_form_field.dart';
 import 'package:webullish/view/widgets/onboarding_button.dart';
 
+import 'forgot_password_screen.dart';
+
 class LoginScreen extends StatelessWidget {
 
   @override
@@ -88,7 +90,9 @@ class LoginScreen extends StatelessWidget {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       splashColor: Colors.transparent,
-                      onTap: (){},
+                      onTap: (){
+                        Get.to(ForgotPasswordScreen());
+                      },
                       child: MyText(text: 'Forgot Password?',
                         color: AppColors.whiteColor,
                         size: 14,

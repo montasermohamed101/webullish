@@ -3,8 +3,11 @@ import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:webullish/view/pages/auth/login_screen.dart';
 import 'package:webullish/view/pages/auth/privacy_policy.dart';
 import 'package:webullish/view/pages/home/home_screen.dart';
+import 'package:webullish/view/pages/initial_screen.dart';
+import 'package:webullish/view/pages/onboarding/onboarding_screen.dart';
 
 bool? show;
 void main()async {
@@ -40,8 +43,8 @@ class MyApp extends StatelessWidget {
         );
       },
       debugShowCheckedModeBanner: false,
-      // home:show! == true ? LoginScreen() :  OnBoardingScreen(),
-      home:HomeScreen(),
+      home:show! == true ? LoginScreen() :  OnBoardingScreen(),
+      // home:InitialScreen(),
     );
   }
 }
