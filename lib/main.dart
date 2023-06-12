@@ -43,8 +43,8 @@ class MyApp extends StatelessWidget {
         );
       },
       debugShowCheckedModeBanner: false,
-      home:show! == true ? LoginScreen() :  OnBoardingScreen(),
-      // home:InitialScreen(),
+      // home:show! == true ? LoginScreen() :  OnBoardingScreen(),
+      home:InitialScreen(),
     );
   }
 }

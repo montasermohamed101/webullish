@@ -19,5 +19,8 @@ class AppColors{
   static Color youtubeBackground = const Color(0xffCB3933);
   static Color instagramBackground = const Color(0xff5682A6);
   static Color linkedBackground = const Color(0xff027BB6);
+  static Color backPerformanceColor = const Color(0xff2A2936);
+  static Color yelloColor = const Color(0xffFFF50A);
+  static Color grayColor = const Color(0xffC4C4C4);
 
 }

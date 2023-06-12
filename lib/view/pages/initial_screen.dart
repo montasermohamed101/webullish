@@ -33,24 +33,25 @@ class InitialScreen extends StatelessWidget {
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Image.asset("assets/images/nav/performance.png",height: 50),
+                  icon: Image.asset("assets/images/nav/performance.png",height: 50,color: controller.currentIndex !=1 ?AppColors.navUnSelectedColor:AppColors.navSelectedColor,),
                   label: 'Performance',
                 ),
                 BottomNavigationBarItem(
-                  icon: Image.asset("assets/images/nav/notification.png",height: 50),
+                  icon: Image.asset("assets/images/nav/notification.png",height: 50,color: controller.currentIndex !=2 ?AppColors.navUnSelectedColor:AppColors.navSelectedColor,),
                   label: 'Swing Alerts',
                 ),
                 BottomNavigationBarItem(
-                  icon: Image.asset("assets/images/nav/video.png",height: 50),
+                  icon: Image.asset("assets/images/nav/video.png",height: 50,color: controller.currentIndex !=3 ?AppColors.navUnSelectedColor:AppColors.navSelectedColor,),
                   label: 'Extras',
                 ),
                 BottomNavigationBarItem(
-                  icon: Image.asset("assets/images/nav/profile.png",height: 50),
+                  icon: Image.asset("assets/images/nav/profile.png",height: 50,color: controller.currentIndex !=4 ?AppColors.navUnSelectedColor:AppColors.navSelectedColor,),
                   label: 'Profile',
                 ),
 
               ],
               selectedItemColor: AppColors.navSelectedColor,
+
               unselectedItemColor: AppColors.navUnSelectedColor,
             ),
           ),
