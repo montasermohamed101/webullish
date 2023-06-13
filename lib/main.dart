@@ -10,10 +10,12 @@ import 'package:webullish/view/pages/initial_screen.dart';
 import 'package:webullish/view/pages/onboarding/onboarding_screen.dart';
 
 bool? show;
+String? accessToken;
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   show = prefs.getBool('onBoarding') ?? false;
+   accessToken = prefs.getString('token');
   runApp(const MyApp());
 }
 
@@ -43,8 +45,8 @@ class MyApp extends StatelessWidget {
         );
       },
       debugShowCheckedModeBanner: false,
-      // home:show! == true ? LoginScreen() :  OnBoardingScreen(),
-      home:InitialScreen(),
+      home: (accessToken != null && accessToken!.isNotEmpty && show != null && show!) ? HomeScreen() : ((accessToken != null && accessToken!.isNotEmpty) ? OnBoardingScreen() : LoginScreen()),
+      // home:InitialScreen(),
     );
   }
 }

@@ -40,6 +40,7 @@ class MyTextFormField extends StatelessWidget {
       textAlignVertical: TextAlignVertical.center,
       validator: (value) => validator(value),
       decoration: InputDecoration(
+
         // labelText: labelText,
         suffixIcon: suffixIcon,
         hintText: hintText,
@@ -49,6 +50,7 @@ class MyTextFormField extends StatelessWidget {
         //contentPadding: const EdgeInsets.from
         //(20.0, 20.0, 20.0, 5.0),
         // alignLabelWithHint: true,
+
         hintStyle:  TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w400,
@@ -56,10 +58,11 @@ class MyTextFormField extends StatelessWidget {
           color: AppColors.grey,
         ),
         errorStyle:
-        Theme.of(context).textTheme.labelSmall?.copyWith(color: Colors.red),
+        TextStyle(fontSize: 18.0),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
+
         //fillColor: Colors.grey.shade200,
         fillColor: Colors.transparent,
         filled: true,

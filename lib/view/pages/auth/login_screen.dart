@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:webullish/controller/auth/register_controller.dart';
 import 'package:webullish/controller/auth/login_controller.dart';
 import 'package:webullish/controller/auth/login_controller.dart';
+import 'package:webullish/model/auth_model/login_model.dart';
 import 'package:webullish/utils/app_colors.dart';
 import 'package:webullish/view/pages/auth/register_screen.dart';
 import 'package:webullish/view/widgets/my_text.dart';
@@ -105,11 +106,12 @@ class LoginScreen extends StatelessWidget {
                         onPressed: (){
                           if(controller.loginFormKey.currentState!.validate()){
                             controller.loginFormKey.currentState!.save();
-
+                            controller.login(
+                              model: LoginModel(email: controller.emailController.text,
+                                  password: controller.passwordController.text),
+                              context: context
+                            );
                           }else{
-                            showDialog(context: context, builder: (_) => AlertDialog(
-                              title: Text('Please Enter all Fields'),
-                            ));
                           }
                         },
                         size: 22,

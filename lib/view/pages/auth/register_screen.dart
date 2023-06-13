@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:webullish/controller/auth/register_controller.dart';
+import 'package:webullish/model/auth_model/register_model.dart';
 import 'package:webullish/view/pages/auth/login_screen.dart';
 import 'package:webullish/view/pages/auth/privacy_policy.dart';
 import 'package:webullish/view/pages/auth/terms.dart';
@@ -47,8 +48,8 @@ class RegisterScreen extends StatelessWidget {
                         if (value.length > 25) {
                           return 'name cannot be longer than 25 characters';
                         }
-                        if (value.length < 2) {
-                          return 'name  must have at least 2 characters';
+                        if (value.length < 5) {
+                          return 'name  must have at least 5 characters';
                         }
                         return null;
                       },
@@ -75,13 +76,9 @@ class RegisterScreen extends StatelessWidget {
                       },
                       keyboardType: TextInputType.emailAddress,
                       hintText: 'youremail@mail.com',
-                      obscureText: controller.isVisibility,
+                      obscureText: false,
                       maxLines: 1,
-                      suffixIcon: InkWell(
-                          onTap: (){
-                            controller.visibility();
-                          },
-                          child: Icon(controller.isVisibility ?Icons.visibility_off  :Icons.visibility,color: AppColors.ancientColor,)),
+                    suffixIcon: Icon(Icons.email_outlined,color: AppColors.ancientColor,),
                     ),
                     const SizedBox(height: 20),
                     MyTextFormField(
@@ -93,8 +90,8 @@ class RegisterScreen extends StatelessWidget {
                         if (value.length > 25) {
                           return 'Password cannot be longer than 25 characters';
                         }
-                        if (value.length < 2) {
-                          return 'Password  must have at least 2 characters';
+                        if (value.length < 6) {
+                          return 'Password  must have at least 6 characters';
                         }
                         return null;
                       },
@@ -110,15 +107,41 @@ class RegisterScreen extends StatelessWidget {
                           child: Icon(controller.isVisibility ?Icons.lock_outline  :Icons.lock_open,color: AppColors.ancientColor,)),
                     ),
                     const SizedBox(height: 20),
-                    MyDropDownMenu(
-                        myList: controller.items,
-                        onChanged:  (val) {
-                          controller.country = val!;
-                        }
+                    MyTextFormField(
+                        controller: controller.countryController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter the Country ';
+                          }
+                          if (value.length > 25) {
+                            return 'Country cannot be longer than 25 characters';
+                          }
+                          if (value.length < 2) {
+                            return 'Country  must have at least 2 characters';
+                          }
+                          return null;
+                        },
+                        obscureText: false,
+                        keyboardType: TextInputType.text,
+                        hintText: 'Enter Your Country'
                     ),
                     const SizedBox(height: 39),
                     MyButton(text: 'Sign Up',
-                      onPressed: (){},
+                      onPressed: (){
+                        if(controller.registerFormKey.currentState!.validate()){
+                          controller.registerFormKey.currentState!.save();
+                          controller.sendToApi(
+                              RegisterModel(
+                                  name: controller.nameController.text,
+                                  email: controller.emailController.text,
+                                  country: controller.countryController.text,
+                                  password: controller.passwordController.text
+                              ),
+                              context
+                          );
+
+                        }
+                      },
                       size: 22,
                       color: AppColors.whiteColor,
                       fontWeight: FontWeight.w700,
