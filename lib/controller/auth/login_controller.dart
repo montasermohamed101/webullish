@@ -20,7 +20,7 @@ class LoginController extends GetxController{
   }
 
   login({required LoginModel model,required BuildContext context}) {
-    postRequest('http://webullish.space/api/auth/token/user', model.toJson()).then((value) async{
+    postRequest(ApiConst.loginUrl, model.toJson()).then((value) async{
       if(value['error'] == null){
         String accessToken = value['token'];
         print('Access token: $accessToken');
