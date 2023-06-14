@@ -4,13 +4,13 @@ import 'package:get/get.dart';
 import 'package:webullish/controller/auth/register_controller.dart';
 import 'package:webullish/controller/auth/login_controller.dart';
 import 'package:webullish/controller/auth/login_controller.dart';
-import 'package:webullish/model/auth_model/login_model.dart';
 import 'package:webullish/utils/app_colors.dart';
 import 'package:webullish/view/pages/auth/register_screen.dart';
 import 'package:webullish/view/widgets/my_text.dart';
 import 'package:webullish/view/widgets/my_text_form_field.dart';
 import 'package:webullish/view/widgets/onboarding_button.dart';
 
+import '../../../model/auth_model/request/login_model.dart';
 import 'forgot_password_screen.dart';
 
 class LoginScreen extends StatelessWidget {

@@ -3,4 +3,5 @@ class ApiConst {
 
   static const registerUrl = "${_baseUrl}/api/user";
   static const loginUrl = "${_baseUrl}/api/auth/token/user";
+  static const getUserUrl = "${_baseUrl}/api/user";
 }

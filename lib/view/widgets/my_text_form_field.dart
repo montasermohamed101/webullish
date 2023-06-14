@@ -12,6 +12,7 @@ class MyTextFormField extends StatelessWidget {
   String? hintText;
   Widget? suffixIcon;
   bool? obscureText;
+  String? initialValue;
   MyTextFormField({
     super.key,
     required this.controller,
@@ -22,6 +23,7 @@ class MyTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.obscureText,
     this.maxLines,
+    this.initialValue,
   });
 
   @override
@@ -37,6 +39,7 @@ class MyTextFormField extends StatelessWidget {
       cursorColor: Colors.black,
       keyboardType: keyboardType,
       obscureText: obscureText!,
+      initialValue: initialValue,
       textAlignVertical: TextAlignVertical.center,
       validator: (value) => validator(value),
       decoration: InputDecoration(

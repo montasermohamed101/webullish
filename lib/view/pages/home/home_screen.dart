@@ -5,8 +5,11 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
+import 'package:webullish/model/users/user_model.dart';
 import 'package:webullish/utils/app_colors.dart';
+import 'package:webullish/view/pages/auth/login_screen.dart';
 import 'package:webullish/view/widgets/home_widgets/color_container.dart';
 import 'package:webullish/view/widgets/my_text.dart';
 
@@ -18,8 +21,13 @@ class HomeScreen extends StatelessWidget {
 
 
 
+  // final UserDM? user;
+  //
+  // HomeScreen({this.user});
+
   @override
   Widget build(BuildContext context) {
+
     return GetBuilder<HomeController>(
         init: HomeController(),
         builder: (controller) => Scaffold(
@@ -28,17 +36,36 @@ class HomeScreen extends StatelessWidget {
               appBar: AppBar(
                 elevation: 0,
                 backgroundColor: Colors.transparent,
-                title: Column(
+                title: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // FutureBuilder(
+                    //   future: controller.getCurrentUser(),
+                    //   builder: (context, snapshot) {
+                    //     if (snapshot.connectionState == ConnectionState.waiting) {
+                    //       return Center(child: CircularProgressIndicator());
+                    //     } else if (snapshot.hasError) {
+                    //       return Text('Error');
+                    //     } else if (snapshot.hasData) {
+                    //       return MyText(
+                    //         text: 'Welcome, ${controller.currentUser.name ?? ''}!',
+                    //         color: AppColors.ancientColor,
+                    //         fontWeight: FontWeight.bold,
+                    //         size: 22,
+                    //       );
+                    //     } else {
+                    //       return Center(child: CircularProgressIndicator());
+                    //     }
+                    //   },
+                    // ),
                     MyText(
-                      text: 'Hello ouadi,',
-                      color: AppColors.ancientColor,
-                      fontWeight: FontWeight.bold,
-                      size: 22,
+                      text: '${controller.greeting}',
+                      color: AppColors.whiteColor,
+                      fontWeight: FontWeight.w500,
+                      size: 17,
                     ),
-                    MyText(
-                      text: 'Good Morning',
+                    controller.currentUser.name == null ? Center(child: CircularProgressIndicator()):  MyText(
+                      text: ' : ${controller.currentUser.name?? ""}',
                       color: AppColors.whiteColor,
                       fontWeight: FontWeight.w500,
                       size: 17,
@@ -47,8 +74,11 @@ class HomeScreen extends StatelessWidget {
                 ),
                 actions: [
                   IconButton(
-                      onPressed: () {
-                        controller.showBottomSheet(context);
+                      onPressed: () async{
+                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                        prefs.clear();
+                       Get.offAll( LoginScreen());
+                       //  controller.showBottomSheet(context);
                       },
                       icon: Icon(
                         Icons.settings_outlined,

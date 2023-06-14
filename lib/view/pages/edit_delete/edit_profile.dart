@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:webullish/controller/home/home_controller.dart';
 
 import '../../../controller/edit_delete_controller/edit_profile_controller.dart';
 import '../../../utils/app_colors.dart';
@@ -8,6 +9,8 @@ import '../../widgets/my_text_form_field.dart';
 import '../../widgets/onboarding_button.dart';
 
 class EditProfile extends StatelessWidget {
+
+  var homeController = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EditProfileController>(

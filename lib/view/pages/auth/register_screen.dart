@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:webullish/controller/auth/register_controller.dart';
-import 'package:webullish/model/auth_model/register_model.dart';
+import 'package:webullish/model/auth_model/request/register_model.dart';
 import 'package:webullish/view/pages/auth/login_screen.dart';
 import 'package:webullish/view/pages/auth/privacy_policy.dart';
 import 'package:webullish/view/pages/auth/terms.dart';

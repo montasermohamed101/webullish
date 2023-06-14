@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:webullish/constants/api_links.dart';
+import 'package:webullish/model/auth_model/response/register_response.dart';
 import 'package:webullish/services/api.dart';
 import 'package:webullish/view/pages/initial_screen.dart';
 import 'package:webullish/view/widgets/my_text.dart';
 
-import '../../model/auth_model/register_model.dart';
+import '../../model/auth_model/request/register_model.dart';
 import '../../utils/app_colors.dart';
 
 class RegisterController extends GetxController{
@@ -34,7 +35,9 @@ class RegisterController extends GetxController{
 
   sendToApi(RegisterModel model,BuildContext context){
     postRequest(ApiConst.registerUrl, model.toJson()).then((value) {
-      if(value['error'] == null){
+      var response = RegisterResponse.fromJson(value);
+      print(value);
+      if(response.errors != null){
         print('Success');
         Get.offAll(InitialScreen());
       }
@@ -44,7 +47,7 @@ class RegisterController extends GetxController{
           builder: (context) {
             return AlertDialog(
               title: Text('Registration failed'),
-              content: Text('The email has already been taken.'),
+              content: Text(response.message.toString()),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
