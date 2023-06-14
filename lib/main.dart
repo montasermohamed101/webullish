@@ -3,25 +3,30 @@ import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webullish/home.dart';
-import 'package:webullish/utils/utils.dart';
+import 'package:webullish/test_screen.dart';
+import 'package:webullish/view/pages/auth/login_screen.dart';
+import 'package:webullish/view/pages/auth/privacy_policy.dart';
+import 'package:webullish/view/pages/home/home_screen.dart';
+import 'package:webullish/view/pages/initial_screen.dart';
 import 'package:webullish/view/pages/onboarding/onboarding_screen.dart';
 
-bool? show;
+bool? onBoarding;
+String? accessToken;
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
-  show = prefs.getBool('onBoarding') ?? false;
+  onBoarding = prefs.getBool('onBoarding') ?? false;
+   accessToken = prefs.getString('token');
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return ResponsiveWrapper.builder(
           ClampingScrollWrapper.builder(context, child!),
@@ -40,9 +45,14 @@ class MyApp extends StatelessWidget {
           ],
         );
       },
-      debugShowCheckedModeBanner: false,
-      home:show! == true ? HomeScreen() :  OnBoardingScreen(),
+      home: onBoarding == true && accessToken != null && accessToken!.isNotEmpty
+          ? InitialScreen()
+          : onBoarding == true && (accessToken == null || accessToken!.isEmpty)
+          ? LoginScreen()
+          : OnBoardingScreen(),
+      // home: TestScreen(),
     );
   }
 }
+
 

@@ -6,8 +6,10 @@ class MyText extends StatelessWidget {
   Color color;
   double? size;
   FontWeight? fontWeight;
+  TextAlign? textAlign;
+  int? maxLine;
 
-  MyText({required this.text,required this.color, this.size,this.fontWeight});
+  MyText({required this.text,required this.color, this.size,this.fontWeight,this.textAlign,this.maxLine});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,8 @@ class MyText extends StatelessWidget {
         fontWeight:fontWeight ?? FontWeight.w400 ,
         fontFamily: 'Poppins',
       ),
-      textAlign: TextAlign.center,
+      textAlign: textAlign ?? TextAlign.center,
+      maxLines: maxLine ?? null,
     );
   }
 }
