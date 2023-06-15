@@ -3,10 +3,18 @@ import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:webullish/controller/home/home_controller.dart';
+import 'package:webullish/test_screen.dart';
+import 'package:webullish/view/pages/auth/login_screen.dart';
+import 'package:webullish/view/pages/auth/privacy_policy.dart';
+import 'package:webullish/view/pages/home/home_screen.dart';
+import 'package:webullish/view/pages/initial_screen.dart';
+import 'package:webullish/view/pages/onboarding/onboarding_screen.dart';
 import 'package:webullish/bindings/initail_Bindings.dart';
 
 import 'package:webullish/view/pages/perofrmance/performance_january.dart';
 import 'package:webullish/view/pages/perofrmance/webullish_performance.dart';
+
 
 bool? onBoarding;
 String? accessToken;
@@ -53,6 +61,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//////
+
 
 
