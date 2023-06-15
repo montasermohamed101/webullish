@@ -228,6 +228,7 @@ final List<Color> socialColor = [
       }
     });
   }
+
   String greeting = '';
   void stopTimer() {
     timer?.cancel();
@@ -236,18 +237,9 @@ final List<Color> socialColor = [
     DateTime now = DateTime.now();
     int hour = now.hour;
     if (hour < 12) {
-
-        greeting = 'Good morning';
-    update();
-    } else if (hour < 18) {
-        greeting = 'Good afternoon';
-
-      update();
+      greeting = 'Good Morning';
     } else {
-
-        greeting = 'Good evening';
-
-      update();
+      greeting = 'Good Evening';
     }
   }
   @override
