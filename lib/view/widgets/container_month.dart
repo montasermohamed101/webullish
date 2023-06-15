@@ -20,6 +20,7 @@ class Container_Month extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 20.0),
       height: 275,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -29,7 +30,7 @@ class Container_Month extends StatelessWidget {
           ),
           color: AppColors.backPerformanceColor),
       child: Padding(
-        padding: const EdgeInsets.only(left: 17, right: 17),
+        padding: const EdgeInsets.only(left: 17, right: 17,),
         child: Column(children: [
           SizedBox(
             height: 30,
