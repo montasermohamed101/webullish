@@ -15,9 +15,11 @@ class WebullishPerformanceController extends GetxController {
    late StatusRequest statusRequest;
 
    Map<String,dynamic> performance ={};
+   List<dynamic> performances=[];
   // Performance? performance;
-  
-
+  //=====
+String? percentage ;
+int? value ;
   getData() async {
     statusRequest = StatusRequest.loading;
     var response = await testData.getPerformanceData();
@@ -28,6 +30,11 @@ class WebullishPerformanceController extends GetxController {
     if (StatusRequest.success == statusRequest) {
       print('=============== check if condetion ===============');
       performance.addAll(response);
+      performances = [performance.addAll(response)].toList();
+      print(performances);
+//       String percentage = performance['performance'][0]['target'];
+// int value = int.parse(percentage.replaceAll('%', ''));
+//   print(value);
          update();
 
       print('========================performance');
