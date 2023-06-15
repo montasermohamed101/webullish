@@ -1,22 +1,22 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-Future<Map<dynamic, dynamic>> getRequest(String url,) async {
-  try {
-    var response = await http.get(Uri.parse(url), headers: {
-      "Content-type": "application/json",
-      "Accept":"application/json",
-    });
-    if (response.statusCode == 200) {
-      var responsebody = jsonDecode(response.body);
-      return responsebody;
-    } else {
-      return {"error": response.statusCode};
-    }
-  } catch (e) {
-    return {"error": e};
-  }
-}
+// Future<Map<dynamic, dynamic>> getRequest(String url,) async {
+//   try {
+//     var response = await http.get(Uri.parse(url), headers: {
+//       "Content-type": "application/json",
+//       "Accept":"application/json",
+//     });
+//     if (response.statusCode == 200) {
+//       var responsebody = jsonDecode(response.body);
+//       return responsebody;
+//     } else {
+//       return {"error": response.statusCode};
+//     }
+//   } catch (e) {
+//     return {"error": e};
+//   }
+// }
 /*
 Future<Map<dynamic, dynamic>> postRequest2(String url, Map map) async {
   try {
