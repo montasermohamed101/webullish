@@ -96,62 +96,17 @@ class PerformanceJanuary extends StatelessWidget {
                           const SizedBox(
                             height: 12,
                           ),
-                          SizedBox(
+                          controller.performance.isEmpty? Center(child: CircularProgressIndicator()):   SizedBox(
                             height: 600.0,
-                            child: ListView.builder(
-                                itemCount: controller
-                                    .performance['performances'].length,
-                                itemBuilder: (context, index) =>
-                                    //  RowWidget(
-                                    //   sympol: controller.performance['performances'][index]['sympol'].toString(),
-                                    //   reached: "${controller.performance['performances'][index]['reached']}",
-                                    //   target: "${controller.performance['performances'][index]['target']}",
-                                    // ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 10.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container_Performance(
-                                            colortext: AppColors.ancientColor,
-                                            text: controller
-                                                .performance['performances']
-                                                    [index]['sympol']
-                                                .toString(),
-                                            color:
-                                                AppColors.backPerformanceColor,
-                                          ),
-                                          Container_Performance(
-                                            colortext: AppColors.ancientColor,
-                                            text:
-                                                "${controller.performance['performances'][index]['reached']}",
-                                            color:
-                                                AppColors.backPerformanceColor,
-                                          ),
-                                          Container_Performance(
-                                            colortext: AppColors.whiteColor,
-                                            text:
-                                                "${controller.performance['performances'][index]['target']}",
-                                            color: int.parse(controller
-                                                        .performance[
-                                                            'performances']
-                                                            [index]['target']
-                                                        .replaceAll('%', '')) <=
-                                                    9
-                                                ? AppColors.redColor
-                                                : AppColors.greenColor,
-                                          ),
-                                          Container_Performance(
-                                            colortext: AppColors.ancientColor,
-                                            text: '4 Days',
-                                            color:
-                                                AppColors.backPerformanceColor,
-                                          ),
-                                        ],
-                                      ),
-                                    )),
+                            child:  ListView.builder(
+                              itemCount: controller.performance['performances'].length,
+                              itemBuilder: (context, index) => 
+                               RowWidget(
+                                sympol: controller.performance['performances'][index]['sympol'].toString(),
+                                reached: "${controller.performance['performances'][index]['reached']}",
+                                target: "${controller.performance['performances'][index]['target']}",
+                              ),
+                            ),
                           ),
                           const SizedBox(
                             height: 12,
@@ -314,4 +269,45 @@ class PerformanceJanuary extends StatelessWidget {
   }
 }
 
-//${DateTime.parse(controller.performance['performances'][index]['created_at']).day - DateTime.parse(controller.performance['performances'][index]['updated_at']).day}
+class RowWidget extends StatelessWidget {
+  const RowWidget({
+    super.key,
+    required this.sympol,
+    required this.reached,
+    required this.target,
+  });
+  final String sympol;
+  final String reached;
+  final String target;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container_Performance(
+            colortext: AppColors.ancientColor,
+            text: sympol,
+            color: AppColors.backPerformanceColor,
+          ),
+          Container_Performance(
+            colortext: AppColors.ancientColor,
+            text: reached,
+            color: AppColors.backPerformanceColor,
+          ),
+          Container_Performance(
+            colortext: AppColors.whiteColor,
+            text: target,
+            color: Colors.green,
+          ),
+          Container_Performance(
+            colortext: AppColors.ancientColor,
+            text: '4 Days',
+            color: AppColors.backPerformanceColor,
+          ),
+        ],
+      ),
+    );
+  }
+}

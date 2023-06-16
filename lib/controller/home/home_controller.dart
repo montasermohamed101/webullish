@@ -145,6 +145,7 @@ final List<Color> socialColor = [
   late List<ChewieController> chewieControllers;
 
 
+
   int? userId;
 
   UserDM currentUser = UserDM();
@@ -294,7 +295,7 @@ final List<Color> socialColor = [
   ScrollController scrollController = ScrollController();
   Timer? timer;
   double scrollSpeed = 50.0;
-  void _startTimer() {
+  void startTimer() {
     timer = Timer.periodic(const Duration(milliseconds: 300), (_) {
       if (scrollController.position.maxScrollExtent == scrollController.offset) {
         scrollController.jumpTo(0.0);
@@ -335,7 +336,7 @@ final List<Color> socialColor = [
     scrollController = ScrollController();
     scrollController.addListener(_scrollListener);
 
-    _startTimer();
+    startTimer();
     update();
     super.onInit();
   }
@@ -344,7 +345,7 @@ final List<Color> socialColor = [
   void _scrollListener() {
     if (scrollController.hasClients && !isScrolling) {
       isScrolling = true;
-      _startTimer();
+      startTimer();
     } else if (!scrollController.hasClients && isScrolling) {
       isScrolling = false;
       stopTimer();

@@ -51,13 +51,13 @@ class MyApp extends StatelessWidget {
           ],
         );
       },
-      // home: onBoarding == true && accessToken != null && accessToken!.isNotEmpty
-      //     ? InitialScreen()
-      //     : onBoarding == true && (accessToken == null || accessToken!.isEmpty)
-      //     ? LoginScreen()
-      //     : OnBoardingScreen(),
-      home: const PerformanceJanuary(),
-      initialBinding: InitailBaindings(),
+      home: onBoarding == true && accessToken != null && accessToken!.isNotEmpty
+          ? InitialScreen()
+          : onBoarding == true && (accessToken == null || accessToken!.isEmpty)
+          ? LoginScreen()
+          : OnBoardingScreen(),
+      // home: const PerformanceJanuary(),
+      // initialBinding: InitailBaindings(),
     );
   }
 }

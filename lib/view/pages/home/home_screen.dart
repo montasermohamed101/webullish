@@ -33,6 +33,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return GetBuilder<HomeController>(
+
         init: HomeController(),
         builder: (controller) => Scaffold(
           key: controller.scaffoldKey,
