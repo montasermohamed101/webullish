@@ -3,14 +3,11 @@ import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webullish/controller/home/home_controller.dart';
-import 'package:webullish/test_screen.dart';
-import 'package:webullish/view/pages/auth/login_screen.dart';
-import 'package:webullish/view/pages/auth/privacy_policy.dart';
-import 'package:webullish/view/pages/home/home_screen.dart';
-import 'package:webullish/view/pages/initial_screen.dart';
-import 'package:webullish/view/pages/onboarding/onboarding_screen.dart';
+
 import 'package:webullish/bindings/initail_Bindings.dart';
+import 'package:webullish/view/pages/alert/alert_screen.dart';
+import 'package:webullish/view/pages/faq/faq.dart';
+import 'package:webullish/view/pages/home/home_screen.dart';
 
 import 'package:webullish/view/pages/perofrmance/performance_january.dart';
 import 'package:webullish/view/pages/perofrmance/webullish_performance.dart';
@@ -56,7 +53,7 @@ class MyApp extends StatelessWidget {
       //     : onBoarding == true && (accessToken == null || accessToken!.isEmpty)
       //     ? LoginScreen()
       //     : OnBoardingScreen(),
-      home: const PerformanceJanuary(),
+      home:  Webullish_Performance(),
       initialBinding: InitailBaindings(),
     );
   }
