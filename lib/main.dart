@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
       //     : onBoarding == true && (accessToken == null || accessToken!.isEmpty)
       //     ? LoginScreen()
       //     : OnBoardingScreen(),
-      home:  Webullish_Performance(),
+      home:  const Webullish_Performance(),
       initialBinding: InitailBaindings(),
     );
   }

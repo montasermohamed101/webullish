@@ -1,11 +1,11 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:webullish/api/class/handling_data_view.dart';
 import 'package:webullish/controller/performance/webullish_performance_controller.dart';
-// import 'package:fl_chart/fl_chart.dart'; 
+import 'package:fl_chart/fl_chart.dart'; 
 import '../../../utils/app_colors.dart';
 import '../../widgets/container_performance.dart';
 
@@ -38,6 +38,8 @@ class PerformanceJanuary extends StatelessWidget {
                                 controller.countSuccess = 0;
                                 controller.rateFailInt = 0;
                                 controller.rateSuccessInt = 0;
+                                controller.rateFail = 0;
+                                controller.rateSuccess = 0;
                               },
                               child: Icon(
                                 Icons.arrow_back_ios_new,
@@ -337,12 +339,15 @@ class PerformanceJanuary extends StatelessWidget {
                                         ),
                                       ),
                                       const SizedBox(
-                                        height: 58,
+                                        height: 10,
                                       ),
-                                      Image.asset(
-                                          'assets/images/Vector 10.png'),
-                                      Image.asset(
-                                          'assets/images/Vector 11.png'),
+                                     
+                                      SizedBox(
+                                        height: 300.0,
+                                        child: LineChartPage()),
+                                        const SizedBox(
+                                        height: 10,
+                                      ),
                                     ],
                                   ),
                                 )
@@ -355,4 +360,74 @@ class PerformanceJanuary extends StatelessWidget {
     );
   }
 }
+
+class LineChartPage extends StatelessWidget {
+  final List<Color> gradientColors = 
+  [
+    const Color(0xff23b6e6),
+    const Color(0xff02d39a),
+  ];
+  final WebullishPerformanceController exController = Get.put(WebullishPerformanceController());
+  late double? douSuc = exController.rateSuccess;
+  late double? douFail = exController.rateFail;
+  @override
+
+  Widget build(BuildContext context) => LineChart(
+    LineChartData(
+      
+      minX: 0,
+      maxX: 30,
+      minY: 0,
+      maxY: 100,
+      
+      gridData: FlGridData(
+        show: true,
+        getDrawingHorizontalLine: (value) {
+          return const FlLine();
+        },
+        getDrawingVerticalLine: (value) {
+          return const FlLine();
+        },
+      ),
+      borderData: FlBorderData(
+        show: true,
+        border: Border.all(color: AppColors.blueBrownColor,width: 2.0),
+      ),
+      lineBarsData: 
+      [
+        LineChartBarData(
+          color:  AppColors.greenColor,
+          spots:
+          [
+             FlSpot(0, douSuc!),
+             FlSpot(5, douSuc!),
+             FlSpot(10, douSuc!),
+             FlSpot(15, douSuc!),
+             FlSpot(20, douSuc!),
+             FlSpot(25, douSuc!),
+             FlSpot(28, douSuc!),
+          ],
+          isCurved: true,
+          barWidth: 5.0,
+        ),
+        LineChartBarData(
+          color:  AppColors.redColor,
+          spots:
+          [
+             FlSpot(0, douFail!),
+             FlSpot(5, douFail!),
+             FlSpot(10, douFail!),
+             FlSpot(15, douFail!),
+             FlSpot(20, douFail!),
+             FlSpot(25, douFail!),
+             FlSpot(28, douFail!),
+          ],
+          isCurved: true,
+          barWidth: 5.0,
+        ),
+      ],
+    ),
+  );
+}
+
 

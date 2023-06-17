@@ -10,12 +10,15 @@ class Container_Month extends StatelessWidget {
   String textt;
   String texttt;
   Color color;
+  void Function()? onTap;
   Container_Month(
       {super.key,
       required this.text,
       required this.textt,
       required this.texttt,
-      required this.color});
+      required this.color,
+      required this.onTap,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -71,14 +74,17 @@ class Container_Month extends StatelessWidget {
                     Radius.circular(6),
                   ),
                   color: AppColors.ancientColor),
-              child: Center(
-                  child: Text(
-                'SEE RESULTS',
-                style: TextStyle(
-                    color: AppColors.whiteColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-              )),
+              child: InkWell(
+                onTap: onTap,
+                child: Center(
+                    child: Text(
+                  'SEE RESULTS',
+                  style: TextStyle(
+                      color: AppColors.whiteColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                )),
+              ),
             ),
           )
         ]),
