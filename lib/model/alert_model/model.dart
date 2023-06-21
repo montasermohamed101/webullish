@@ -57,7 +57,7 @@ class ItemList extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 7,
                     ),
                     Expanded(

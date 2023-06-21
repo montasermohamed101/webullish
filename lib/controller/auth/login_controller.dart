@@ -5,7 +5,6 @@ import 'package:webullish/constants/api_links.dart';
 import 'package:webullish/services/api.dart';
 
 import '../../model/auth_model/request/login_model.dart';
-import '../../model/auth_model/response/login_response.dart';
 import '../../view/pages/initial_screen.dart';
 
 class LoginController extends GetxController{
@@ -36,18 +35,18 @@ class LoginController extends GetxController{
           SharedPreferences prefs = await SharedPreferences.getInstance();
           await prefs.setString('token', value['token']);
         await  prefs.setInt('id',id);
-        Get.offAll(InitialScreen());
+        Get.offAll(const InitialScreen());
       }else{
         showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text('Log in failed'),
-              content: Text('The email or password is wrong.'),
+              title: const Text('Log in failed'),
+              content: const Text('The email or password is wrong.'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Text('OK'),
+                  child: const Text('OK'),
                 ),
               ],
             );

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,10 +5,8 @@ import 'package:webullish/constants/api_links.dart';
 import 'package:webullish/model/auth_model/response/register_response.dart';
 import 'package:webullish/services/api.dart';
 import 'package:webullish/view/pages/initial_screen.dart';
-import 'package:webullish/view/widgets/my_text.dart';
 
 import '../../model/auth_model/request/register_model.dart';
-import '../../utils/app_colors.dart';
 
 class RegisterController extends GetxController{
 
@@ -43,20 +40,20 @@ class RegisterController extends GetxController{
         id = value["user"]['id'];
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await  prefs.setInt('id',id);
-        Get.offAll(InitialScreen());
+        Get.offAll(const InitialScreen());
       }
       else{
         showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text('Registration failed'),
+              title: const Text('Registration failed'),
               // content: Text(response.message.toString()),
-              content: Text('Account is Taken try new account'),
+              content: const Text('Account is Taken try new account'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Text('OK'),
+                  child: const Text('OK'),
                 ),
               ],
             );

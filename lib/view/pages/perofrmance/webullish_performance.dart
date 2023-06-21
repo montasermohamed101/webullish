@@ -18,7 +18,9 @@ class Webullish_Performance extends StatelessWidget {
       init: WebullishPerformanceController(),
       builder: (controller) => HandlingDataView(
         statusRequest: controller.statusRequest,
-        widget: Scaffold(
+        widget:controller.performance['performances'].length == null
+                      ? const CircularProgressIndicator()
+                      : Scaffold(
           backgroundColor: AppColors.primaryColor,
           body: Center(
             child: Padding(

@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import '../../../controller/edit_delete_controller/delete_account_controller.dart';
 import '../../../utils/app_colors.dart';
 import '../../widgets/my_text.dart';
-import '../../widgets/my_text_form_field.dart';
-import '../../widgets/onboarding_button.dart';
 
 class DeleteAccount extends StatelessWidget {
+  const DeleteAccount({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DeleteAccountController>(
@@ -79,7 +79,7 @@ class DeleteAccount extends StatelessWidget {
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor:  AppColors.ancientColor,
-                        minimumSize: Size(double.infinity, 51),
+                        minimumSize: const Size(double.infinity, 51),
                       ),
                       onPressed: (){
 

@@ -11,6 +11,8 @@ class TermsScreen extends StatelessWidget {
       '-The Information Shared In The Swing Trading Alerts Including Entry Points & Price Targets Should Never Be Used As "Buy" Or "Sell" Signals. That Information Is Relayed ONLY To Pinpoint Certain Areas On The Trading Charts, Thus, Should Be Used As "Buy" Or "Sell" Signals.'
       'Webullish.Com Or Any Of It’s Associates Is Not Responsible For Any Losses Incurred As A Result Of Using Our Alerts. Information Provided In This Correspondence Is Intended Solely For Informational Purposes, And Is Obtained From Various Sources That Are Believed To Be Credible. Information Is In No Way Guaranteed To Be Accurate. Webullish.Com Members Must Do Their Own Due Diligence, And Execute Trades At Their Own Risk At All Times.';
 
+  const TermsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(

@@ -6,6 +6,8 @@ import '../../../utils/app_colors.dart';
 
 
 class Webullish_PRO extends StatelessWidget {
+  const Webullish_PRO({super.key});
+
 
   @override
   Widget build(BuildContext context) {

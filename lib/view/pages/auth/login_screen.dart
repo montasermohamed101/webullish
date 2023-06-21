@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:webullish/controller/auth/register_controller.dart';
-import 'package:webullish/controller/auth/login_controller.dart';
 import 'package:webullish/controller/auth/login_controller.dart';
 import 'package:webullish/utils/app_colors.dart';
 import 'package:webullish/view/pages/auth/register_screen.dart';
@@ -14,6 +11,8 @@ import '../../../model/auth_model/request/login_model.dart';
 import 'forgot_password_screen.dart';
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +91,7 @@ class LoginScreen extends StatelessWidget {
                       highlightColor: Colors.transparent,
                       splashColor: Colors.transparent,
                       onTap: (){
-                        Get.to(ForgotPasswordScreen());
+                        Get.to(const ForgotPasswordScreen());
                       },
                       child: MyText(text: 'Forgot Password?',
                         color: AppColors.whiteColor,
@@ -130,7 +129,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: (){
-                          Get.offAll(RegisterScreen());
+                          Get.offAll(const RegisterScreen());
                         },
                         child: MyText(text: 'Sign Up here',
                           color: AppColors.ancientColor,

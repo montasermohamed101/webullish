@@ -5,8 +5,6 @@ import 'package:webullish/controller/onboarding_controller/onboarding_controller
 import 'package:webullish/model/onboarding_model/content_model.dart';
 import 'package:webullish/utils/app_colors.dart';
 import 'package:webullish/view/pages/auth/login_screen.dart';
-import 'package:webullish/view/pages/auth/login_screen.dart';
-import 'package:webullish/view/pages/auth/login_screen.dart';
 
 import '../../widgets/my_text.dart';
 import '../../widgets/onboarding_button.dart';
@@ -15,6 +13,8 @@ class OnBoardingScreen extends StatelessWidget {
 
 
   var controller = Get.put(OnBoardingController());
+
+  OnBoardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class OnBoardingScreen extends StatelessWidget {
                 child: MyButton(
                   onPressed: (){
                     controller.saveOnboardingStatus(true);
-                    Get.offAll(LoginScreen());
+                    Get.offAll(const LoginScreen());
                   }, text:'startquickly !',
                   color: AppColors.whiteColor,
                   fontWeight: FontWeight.w700,
@@ -97,7 +97,7 @@ class OnBoardingScreen extends StatelessWidget {
                 children: [
                   TextButton(onPressed: (){
                     controller.saveOnboardingStatus(true);
-                    Get.offAll(LoginScreen());
+                    Get.offAll(const LoginScreen());
                   }, child: MyText(
                     text:'Skip',
                     color: AppColors.whiteColor,
@@ -126,7 +126,7 @@ class OnBoardingScreen extends StatelessWidget {
     return Container(
       height: 10,
       width: controller.currentIndex == index ? 25 : 10,
-      margin: EdgeInsets.only(right: 5),
+      margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color:controller.currentIndex == index ? AppColors.ancientColor : AppColors.whiteColor,
@@ -138,7 +138,7 @@ class OnBoardingScreen extends StatelessWidget {
     if (index == contents.length - 1) {
       return TextButton(onPressed: (){
         controller.saveOnboardingStatus(true);
-        Get.offAll(LoginScreen());
+        Get.offAll(const LoginScreen());
       }, child: MyText(
         text:'Done',
         color: AppColors.ancientColor,
@@ -149,12 +149,12 @@ class OnBoardingScreen extends StatelessWidget {
       return   InkWell(
         onTap: (){
           if(controller.currentIndex == contents.length -1){}
-          controller.pageController .nextPage(duration: Duration(milliseconds: 100),
+          controller.pageController .nextPage(duration: const Duration(milliseconds: 100),
               curve: Curves.bounceIn);
         },
         child: Container(
-          margin: EdgeInsets.only(right: 5),
-          child: Icon(Icons.arrow_forward, color: Colors.white),
+          margin: const EdgeInsets.only(right: 5),
+          child: const Icon(Icons.arrow_forward, color: Colors.white),
         ),
       );
     }

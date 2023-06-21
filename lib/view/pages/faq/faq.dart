@@ -5,6 +5,8 @@ import '../../../utils/app_colors.dart';
 import '../../widgets/faq_widgets/card_faq.dart';
 
 class FAQ extends StatelessWidget {
+  const FAQ({super.key});
+
 
   @override
   Widget build(BuildContext context) {

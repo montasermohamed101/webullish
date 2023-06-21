@@ -9,7 +9,7 @@ class MyText extends StatelessWidget {
   TextAlign? textAlign;
   int? maxLine;
 
-  MyText({required this.text,required this.color, this.size,this.fontWeight,this.textAlign,this.maxLine});
+  MyText({super.key, required this.text,required this.color, this.size,this.fontWeight,this.textAlign,this.maxLine});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class MyText extends StatelessWidget {
         fontFamily: 'Poppins',
       ),
       textAlign: textAlign ?? TextAlign.center,
-      maxLines: maxLine ?? null,
+      maxLines: maxLine,
     );
   }
 }

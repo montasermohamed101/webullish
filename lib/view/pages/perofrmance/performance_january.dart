@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:webullish/api/class/handling_data_view.dart';
 import 'package:webullish/controller/performance/webullish_performance_controller.dart';
 import 'package:fl_chart/fl_chart.dart'; 
@@ -34,12 +33,7 @@ class PerformanceJanuary extends StatelessWidget {
                             InkWell(
                               onTap: () {
                                 Get.back();
-                                controller.countFail = 0;
-                                controller.countSuccess = 0;
-                                controller.rateFailInt = 0;
-                                controller.rateSuccessInt = 0;
-                                controller.rateFail = 0;
-                                controller.rateSuccess = 0;
+                              controller.zeroCount();
                               },
                               child: Icon(
                                 Icons.arrow_back_ios_new,
@@ -344,35 +338,7 @@ class PerformanceJanuary extends StatelessWidget {
                                      
                                       SizedBox(
                                         height: 300.0,
-                                        child: LineChartPage()),
-                                        const SizedBox(
-                                        height: 10,
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ])))
-                    ],
-                  ),
-                ),
-              ),
-      ),
-    );
-  }
-}
-
-class LineChartPage extends StatelessWidget {
-  final List<Color> gradientColors = 
-  [
-    const Color(0xff23b6e6),
-    const Color(0xff02d39a),
-  ];
-  final WebullishPerformanceController exController = Get.put(WebullishPerformanceController());
-  late double? douSuc = exController.rateSuccess;
-  late double? douFail = exController.rateFail;
-  @override
-
-  Widget build(BuildContext context) => LineChart(
+                                        child: LineChart(
     LineChartData(
       
       minX: 0,
@@ -399,13 +365,13 @@ class LineChartPage extends StatelessWidget {
           color:  AppColors.greenColor,
           spots:
           [
-             FlSpot(0, douSuc!),
-             FlSpot(5, douSuc!),
-             FlSpot(10, douSuc!),
-             FlSpot(15, douSuc!),
-             FlSpot(20, douSuc!),
-             FlSpot(25, douSuc!),
-             FlSpot(28, douSuc!),
+             FlSpot(0, controller.percenDoubleSucc),
+             FlSpot(5, controller.percenDoubleSucc),
+             FlSpot(10, controller.percenDoubleSucc),
+             FlSpot(15, controller.percenDoubleSucc),
+             FlSpot(20, controller.percenDoubleSucc),
+             FlSpot(25, controller.percenDoubleSucc),
+             FlSpot(28, controller.percenDoubleSucc),
           ],
           isCurved: true,
           barWidth: 5.0,
@@ -414,20 +380,35 @@ class LineChartPage extends StatelessWidget {
           color:  AppColors.redColor,
           spots:
           [
-             FlSpot(0, douFail!),
-             FlSpot(5, douFail!),
-             FlSpot(10, douFail!),
-             FlSpot(15, douFail!),
-             FlSpot(20, douFail!),
-             FlSpot(25, douFail!),
-             FlSpot(28, douFail!),
+             FlSpot(0, controller.percenDoubleFail),
+             FlSpot(5, controller.percenDoubleFail),
+             FlSpot(10, controller.percenDoubleFail),
+             FlSpot(15, controller.percenDoubleFail),
+             FlSpot(20, controller.percenDoubleFail),
+             FlSpot(25, controller.percenDoubleFail),
+             FlSpot(28, controller.percenDoubleFail),
           ],
           isCurved: true,
           barWidth: 5.0,
         ),
       ],
     ),
-  );
+  )),
+                                        const SizedBox(
+                                        height: 10,
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ])))
+                    ],
+                  ),
+                ),
+              ),
+      ),
+    );
+  }
 }
+
 
 

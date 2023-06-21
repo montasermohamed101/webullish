@@ -35,6 +35,9 @@ class WebullishPerformanceController extends GetxController {
 
   String? month;
   String? target;
+  late double percenDoubleFail = 0.0;
+
+  late double percenDoubleSucc = 0.0;
   String? reached;
   String? sympol;
   String? comment;
@@ -47,22 +50,38 @@ class WebullishPerformanceController extends GetxController {
   late double douSuc = rateSuccess;
   late double? douFail = rateFail;
 
+  zeroCount() {
+    countFail = 0;
+    countSuccess = 0;
+    rateFailInt = 0;
+    rateSuccessInt = 0;
+    rateFail = 0;
+    rateSuccess = 0;
+    percenDoubleSucc = 0;
+    percenDoubleFail = 0;
+    update();
+  }
+
   upDataCounter(int index) {
     month = performance['performances'][index]['month'];
     target = performance['performances'][index]['target'];
     reached = performance['performances'][index]['reached'];
     comment = performance['performances'][index]['comment'];
     sympol = performance['performances'][index]['sympol'];
-    if (int.parse("$target".replaceAll('%', '')) <= 9) {
+    if (int.parse(target!.replaceAll('%', '')) <= 9) {
       countFail++;
       rateFail = ((countFail + countSuccess) / countFail) * 100;
       rateFailInt = rateFail.toInt();
+      percenDoubleFail = double.parse(target!.replaceAll('%', ''));
     } else {
       countSuccess++;
       rateSuccess = ((countFail + countSuccess) / countSuccess) * 100;
       rateSuccessInt = rateSuccess.toInt();
+      percenDoubleSucc = double.parse(target!.replaceAll('%', ''));
     }
     update();
+    print(target);
+    print(percenDoubleSucc);
   }
 
   @override

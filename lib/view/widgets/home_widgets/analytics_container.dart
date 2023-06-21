@@ -9,7 +9,7 @@ class AnalyticsContainer extends StatelessWidget {
    String description;
 
 
-   AnalyticsContainer({required this.image,required this.title,required this.description});
+   AnalyticsContainer({super.key, required this.image,required this.title,required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class AnalyticsContainer extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 color: AppColors.brownColor,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(14),
                   bottomRight:   Radius.circular(14),
                 ),

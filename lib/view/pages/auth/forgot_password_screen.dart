@@ -8,6 +8,8 @@ import '../../widgets/my_text_form_field.dart';
 import '../../widgets/onboarding_button.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {

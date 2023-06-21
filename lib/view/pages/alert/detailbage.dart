@@ -3,7 +3,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 import 'package:webullish/controller/home/home_controller.dart';
 
@@ -41,7 +40,7 @@ class DetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               height: 200,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -56,7 +55,7 @@ class DetailPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
             Padding(
@@ -71,7 +70,7 @@ class DetailPage extends StatelessWidget {
                         fontSize: 22,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 17,
                   ),
                   Text(
@@ -81,7 +80,7 @@ class DetailPage extends StatelessWidget {
                       fontSize: 17,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(

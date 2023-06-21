@@ -11,6 +11,8 @@ import '../../widgets/onboarding_button.dart';
 class EditProfile extends StatelessWidget {
 
   var homeController = Get.put(HomeController());
+
+  EditProfile({super.key});
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EditProfileController>(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webullish/utils/utils.dart';
 
 class OnBoardingController extends GetxController{
   int currentIndex = 0;

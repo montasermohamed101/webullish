@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,6 @@ import '../../model/follow_us_model/follow_us_model.dart';
 import '../../utils/app_colors.dart';
 import '../../view/pages/edit_delete/delete_account.dart';
 import '../../view/widgets/my_text.dart';
-import 'package:http/http.dart' as http;
 class HomeController extends GetxController{
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -72,7 +70,7 @@ class HomeController extends GetxController{
                   const SizedBox(height: 22.0),
                   InkWell(
                     onTap: (){
-                      Get.to(DeleteAccount());
+                      Get.to(const DeleteAccount());
                     },
                     child: Row(
                       children: [

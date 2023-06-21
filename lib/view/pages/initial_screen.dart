@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:webullish/controller/bottom_nav_controller/bottom_nav_controller.dart';
-import 'package:webullish/view/pages/auth/privacy_policy.dart';
-import 'package:webullish/view/pages/home/home_screen.dart';
 
 import '../../utils/app_colors.dart';
-import 'auth/terms.dart';
 
 class InitialScreen extends StatelessWidget {
+  const InitialScreen({super.key});
+
 
 
   @override

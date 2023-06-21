@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:webullish/utils/app_colors.dart';
 import 'package:webullish/view/widgets/my_text.dart';
 
@@ -53,6 +52,8 @@ class PrivacyPolicyScreen extends StatelessWidget {
       '7. Children’s Information\n'
       'Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.'
       'WWW.WEBULLISH.COM does not knowingly collect any Personal Identifiable Information from children under the age of 13 If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.';
+
+  const PrivacyPolicyScreen({super.key});
 
   // final text =  "1. INTRODUCTION'\n"
   //     "'At WWW.WEBULLISH.COM, accessible from https://webullish.com/#1517496583165-6a673847-ecc2, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by WWW.WEBULLISH.COM and how we use it.'\n"

@@ -61,7 +61,7 @@ class MyTextFormField extends StatelessWidget {
           color: AppColors.grey,
         ),
         errorStyle:
-        TextStyle(fontSize: 18.0),
+        const TextStyle(fontSize: 18.0),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),

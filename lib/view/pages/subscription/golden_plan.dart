@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../utils/app_colors.dart';
 
 class Golden_Plan extends StatelessWidget {
+  const Golden_Plan({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +29,11 @@ class Golden_Plan extends StatelessWidget {
                     fontSize: 18,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox()
+              const SizedBox()
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 40,
         ),
         Expanded(
@@ -48,7 +50,7 @@ class Golden_Plan extends StatelessWidget {
                           width: double.infinity,
                           decoration: BoxDecoration(
                             border: Border.all(color: AppColors.ancientColor),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius: const BorderRadius.all(Radius.circular(20)),
                             color: AppColors.primaryColor,
                           ),
                           child: Padding(
@@ -75,7 +77,7 @@ class Golden_Plan extends StatelessWidget {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Center(
@@ -87,37 +89,37 @@ class Golden_Plan extends StatelessWidget {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 47,
                                 ),
                                 Text_Sub(text: 'Well Researched Stock Alerts'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text_Sub(
                                     text:
                                         'Simple Format For All Stock Traders'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text_Sub(
                                     text:
                                         '100+ Spot-On Stock Alerts Every Month'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text_Sub(
                                     text:
                                         'Accessible Analytics & Trackable Performance'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text_Sub(text: 'No Contracts.No Commitments'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text_Sub(text: 'Cancel Anytime'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text(
@@ -127,7 +129,7 @@ class Golden_Plan extends StatelessWidget {
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 36,
                                 ),
                                 Center(
@@ -135,7 +137,7 @@ class Golden_Plan extends StatelessWidget {
                                     height: 51,
                                     width: 200,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                             Radius.circular(6)),
                                         color: AppColors.backPerformanceColor),
                                     child: Center(
@@ -149,7 +151,7 @@ class Golden_Plan extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 14,
                                 ),
                                 Center(
@@ -157,7 +159,7 @@ class Golden_Plan extends StatelessWidget {
                                     height: 51,
                                     width: 200,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                             Radius.circular(6)),
                                         color: AppColors.ancientColor),
                                     child: Center(
@@ -175,7 +177,7 @@ class Golden_Plan extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Container(
@@ -183,7 +185,7 @@ class Golden_Plan extends StatelessWidget {
                           width: double.infinity,
                           decoration: BoxDecoration(
                             border: Border.all(color: AppColors.ancientColor),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius: const BorderRadius.all(Radius.circular(20)),
                             color: AppColors.primaryColor,
                           ),
                           child: Padding(
@@ -210,7 +212,7 @@ class Golden_Plan extends StatelessWidget {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Center(
@@ -222,37 +224,37 @@ class Golden_Plan extends StatelessWidget {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 47,
                                 ),
                                 Text_Sub(text: 'Well Researched Stock Alerts'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text_Sub(
                                     text:
                                         'Simple Format For All Stock Traders'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text_Sub(
                                     text:
                                         '100+ Spot-On Stock Alerts Every Month'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text_Sub(
                                     text:
                                         'Accessible Analytics & Trackable Performance'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text_Sub(text: 'No Contracts.No Commitments'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text_Sub(text: 'Cancel Anytime'),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Text(
@@ -262,7 +264,7 @@ class Golden_Plan extends StatelessWidget {
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 36,
                                 ),
                                 Center(
@@ -270,7 +272,7 @@ class Golden_Plan extends StatelessWidget {
                                     height: 51,
                                     width: 200,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                             Radius.circular(6)),
                                         color: AppColors.backPerformanceColor),
                                     child: Center(
@@ -284,7 +286,7 @@ class Golden_Plan extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 14,
                                 ),
                                 Center(
@@ -292,7 +294,7 @@ class Golden_Plan extends StatelessWidget {
                                     height: 51,
                                     width: 200,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                             Radius.circular(6)),
                                         color: AppColors.ancientColor),
                                     child: Center(
@@ -332,7 +334,7 @@ class Text_Sub extends StatelessWidget {
           radius: 5,
           backgroundColor: AppColors.ancientColor,
         ),
-        SizedBox(
+        const SizedBox(
           width: 7,
         ),
         Text(

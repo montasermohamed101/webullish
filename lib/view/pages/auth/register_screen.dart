@@ -7,12 +7,13 @@ import 'package:webullish/view/pages/auth/privacy_policy.dart';
 import 'package:webullish/view/pages/auth/terms.dart';
 
 import '../../../utils/app_colors.dart';
-import '../../widgets/my_drop_down_menu.dart';
 import '../../widgets/my_text.dart';
 import '../../widgets/my_text_form_field.dart';
 import '../../widgets/onboarding_button.dart';
 
 class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +159,7 @@ class RegisterScreen extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: (){
-                            Get.offAll(LoginScreen());
+                            Get.offAll(const LoginScreen());
                           },
                           child: MyText(text: 'Sign In here',
                             color: AppColors.ancientColor,
@@ -181,7 +182,7 @@ class RegisterScreen extends StatelessWidget {
                       children: [
                         TextButton(
                           onPressed: (){
-                            Get.to(TermsScreen());
+                            Get.to(const TermsScreen());
                           },
                           child: MyText(text: 'Terms',
                             color: AppColors.ancientColor,
@@ -197,7 +198,7 @@ class RegisterScreen extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: (){
-                            Get.to(PrivacyPolicyScreen());
+                            Get.to(const PrivacyPolicyScreen());
                           },
                           child: MyText(text: 'Privacy Policy',
                             color: AppColors.ancientColor,

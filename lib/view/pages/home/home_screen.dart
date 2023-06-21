@@ -1,27 +1,18 @@
-import 'dart:async';
 
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:video_player/video_player.dart';
-import 'package:webullish/model/users/user_model.dart';
 import 'package:webullish/utils/app_colors.dart';
 import 'package:webullish/view/pages/auth/login_screen.dart';
-import 'package:webullish/view/widgets/home_widgets/color_container.dart';
 import 'package:webullish/view/widgets/my_text.dart';
 
-import '../../../constants/api_links.dart';
 import '../../../controller/home/home_controller.dart';
 import '../../../model/follow_us_model/follow_us_model.dart';
-import '../../../services/api.dart';
-import '../../widgets/home_widgets/analytics_container.dart';
-import '../../widgets/home_widgets/team_container.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
 
 
 
@@ -63,12 +54,12 @@ class HomeScreen extends StatelessWidget {
                     //   },
                     // ),
                     MyText(
-                      text: '${controller.greeting}',
+                      text: controller.greeting,
                       color: AppColors.whiteColor,
                       fontWeight: FontWeight.w500,
                       size: 17,
                     ),
-                    controller.currentUser.name == null ? Center(child: CircularProgressIndicator()):  MyText(
+                    controller.currentUser.name == null ? const Center(child: CircularProgressIndicator()):  MyText(
                       text: ' : ${controller.currentUser.name?? ""}',
                       color: AppColors.whiteColor,
                       fontWeight: FontWeight.w500,
@@ -81,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                       onPressed: () async{
                         SharedPreferences prefs = await SharedPreferences.getInstance();
                         prefs.clear();
-                       Get.offAll( LoginScreen());
+                       Get.offAll( const LoginScreen());
                        //  controller.showBottomSheet(context);
                       },
                       icon: Icon(
@@ -107,12 +98,12 @@ class HomeScreen extends StatelessWidget {
                         itemCount: controller.listNotifications.length,
                         itemBuilder: (context, index) {
                           final notification = controller.listNotifications[index];
-                          return controller.listNotifications.isEmpty ? Center(child: Text('Loading')): Padding(
+                          return controller.listNotifications.isEmpty ? const Center(child: Text('Loading')): Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16.0),
                             child: Row(
                               children: [
                                 MyText(
-                                  text: '${notification.name}',
+                                  text: notification.name,
                                   color: AppColors.whiteColor,
                                   size: 17,
                                 ),
@@ -192,7 +183,7 @@ class HomeScreen extends StatelessWidget {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState == ConnectionState.waiting) {
                             // While the data is loading, display a progress indicator.
-                            return Center(
+                            return const Center(
                               child: CircularProgressIndicator(),
                             );
                           } else if (snapshot.hasError) {
@@ -572,7 +563,7 @@ class HomeScreen extends StatelessWidget {
             top: 25,
             left: 25,
             child: Image.asset(
-              '$image',
+              image,
               width: 50,
               height: 50,
             ),

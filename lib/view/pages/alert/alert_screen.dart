@@ -9,6 +9,8 @@ import '../../widgets/my_text.dart';
 
 
 class AlertScreen extends StatelessWidget {
+  const AlertScreen({super.key});
+
   // AlertScreen({Key? key, this.userame}) : super(key: key);
   //
   // String? userame;

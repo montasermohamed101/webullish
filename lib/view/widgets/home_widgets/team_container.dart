@@ -9,7 +9,7 @@ class TeamContainer extends StatelessWidget {
   String description;
 
 
-  TeamContainer({required this.image,required this.title,required this.description});
+  TeamContainer({super.key, required this.image,required this.title,required this.description});
 
   @override
   Widget build(BuildContext context) {

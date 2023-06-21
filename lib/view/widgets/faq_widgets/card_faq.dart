@@ -6,6 +6,8 @@ import '../../../utils/app_colors.dart';
 
 
 class Cart_Faq extends StatelessWidget {
+  const Cart_Faq({super.key});
+
 
   @override
   Widget build(BuildContext context) {

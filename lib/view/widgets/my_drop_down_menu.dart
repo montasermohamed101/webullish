@@ -6,7 +6,7 @@ class MyDropDownMenu extends StatelessWidget {
   List myList;
   String? text;
 
-  MyDropDownMenu({required this.onChanged,required this.myList,this.text});
+  MyDropDownMenu({super.key, required this.onChanged,required this.myList,this.text});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,10 +23,10 @@ class MyDropDownMenu extends StatelessWidget {
         icon: Icon(Icons.arrow_drop_down_sharp,color: AppColors.whiteColor,size: 30,),
         items: myList.map((e) {
           return DropdownMenuItem<String>(
-            child: Text(e,style: TextStyle(
+            value: e,
+            child: Text(e,style: const TextStyle(
               color: Colors.white
             ),),
-            value: e,
           );
         }).toList(),
         onChanged:onChanged
@@ -43,7 +43,7 @@ class MyDropDownMenu extends StatelessWidget {
             borderRadius: BorderRadius.circular(15.0),
           ),
           fillColor: Colors.transparent,
-          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
         ),
       ),
     );
