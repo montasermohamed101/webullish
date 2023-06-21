@@ -32,9 +32,7 @@ int? value ;
       performance.addAll(response);
       performances = [performance.addAll(response)].toList();
       print(performances);
-//       String percentage = performance['performance'][0]['target'];
-// int value = int.parse(percentage.replaceAll('%', ''));
-//   print(value);
+
          update();
 
       print('========================performance');
@@ -47,6 +45,7 @@ int? value ;
     var response = await testData.getPerformanceData();
     print('========================respose');
     print(response);
+
 
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
@@ -64,9 +63,32 @@ int? value ;
     }
 
   }
+
+  String? month;
+  String? target;
+  String? reached;
+  String? sympol;
+  String? comment;
+  int countFail = 0;
+  int countSuccess = 0;
+  double rateFail = 0;
+  int rateFailInt = 0;
+  double rateSuccess = 0;
+  int rateSuccessInt = 0;
+  // getRateFail(){
+  //   rateFail = (countFail+countSuccess)/countFail ;
+  // }
+  // getRateSuccess(){
+  //   rateFail = ((countFail+countSuccess)/countSuccess) ;
+  // }
+  
+
+
   @override
   void onInit() {
     checkInternet();
+    // getRateFail();
+    // getRateSuccess();
     getData();
     update();
     super.onInit();
