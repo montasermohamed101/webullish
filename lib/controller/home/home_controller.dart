@@ -6,12 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
+import 'package:webullish/api/functions/check_internet.dart';
 import 'package:webullish/constants/api_links.dart';
+import 'package:webullish/model/magazine_model/magazine_model.dart';
 import 'package:webullish/model/top_notification_model/top_notification_model.dart';
 import 'package:webullish/services/api.dart';
 import 'package:webullish/model/users/user_model.dart';
 import 'package:webullish/view/pages/edit_delete/edit_profile.dart';
 
+import '../../api/class/status_request.dart';
+import '../../api/functions/handling_data_controller.dart';
 import '../../model/follow_us_model/follow_us_model.dart';
 import '../../utils/app_colors.dart';
 import '../../view/pages/edit_delete/delete_account.dart';
@@ -145,6 +149,7 @@ final List<Color> socialColor = [
   late List<ChewieController> chewieControllers;
 
 
+  late StatusRequest statusRequest;
 
   int? userId;
 
@@ -165,8 +170,10 @@ final List<Color> socialColor = [
 
     print('User ID: $id');
     // + '?id=$id'
+    statusRequest = StatusRequest.loading;
 
     final response = await getRequest(ApiConst.getUserUrl);
+    statusRequest = handlingData(response);
     print('Response: $response');
     if (response.containsKey('error')) {
       // Handle error
@@ -181,6 +188,7 @@ final List<Color> socialColor = [
           print('User: ${currentUser.name}');
           print('User email: ${currentUser.email}');
           print('User id: ${currentUser.id}');
+          print('User id: ${currentUser.country}');
           // Update the UI with the current user
           update();
           // ...
@@ -234,13 +242,13 @@ final List<Color> socialColor = [
   // }
 
 
-  var followUpPages = <FollowUsPagesModel>[];
+  // var followUpPages = <FollowUsPagesModel>[];
   Future<List<FollowUsPagesModel>> getFollowUsPages() async {
     final response = await getRequest(ApiConst.getFollowUsPageUrl);
     if (response.containsKey('error')) {
       throw Exception('API Error: ${response['error']}');
     }
-    // print('===============================================================');
+    print('===============================================================');
     final followUpPagesJson = response['follow_up_pages'] as List<dynamic>;
     return followUpPagesJson.map((json) => FollowUsPagesModel.fromJson(json)).toList();
   }
@@ -313,30 +321,67 @@ final List<Color> socialColor = [
   void stopTimer() {
     timer?.cancel();
   }
+  List<Magazine> magazineModel = [];
+
+  fetchMagazine2() async {
+    try {
+      final response = await http.get(Uri.parse(ApiConst.getMagazineUrl));
+      if (response.statusCode == 200) {
+        final magazineList = magazineModelFromJson(response.body);
+        magazineModel = magazineList.magazines;
+        print('Magazine Items: $magazineModel');
+      } else {
+        print('Error: Failed to fetch magazines. Status code: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+    update();
+  }
+
+  fetchMagazine() async {
+    try {
+      final response = await getRequest(ApiConst.getMagazineUrl);
+      if (response['error'] == null) {
+        final magazineList = MagazineModel.fromJson(response);
+        magazineModel = magazineList.magazines;
+        print('Magazine Items: $magazineModel');
+      } else {
+        print('Error: Failed to fetch magazines. Error: ${response['error']}');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+    update();
+  }
+
 
   @override
   void onInit() {
+    fetchMagazine();
+   checkInternet();
     _setGreeting();
     getCurrentUser();
+
     getTopNotification();
     getFollowUsPages();
-    //Video
-    // videoPlayerControllers =
-    //     videoUrls.map((url) => VideoPlayerController.network(url)).toList();
-    // chewieControllers = videoPlayerControllers
-    //     .map((controller) => ChewieController(
-    //   videoPlayerController: controller,
-    //   autoPlay: false,
-    //   looping: false,
-    // ))
-    //     .toList();
-    // Future.wait(videoPlayerControllers
-    //     .map((controller) => controller.initialize()));
-    // //Video
+    ///Video
+    videoPlayerControllers =
+        videoUrls.map((url) => VideoPlayerController.network(url)).toList();
+    chewieControllers = videoPlayerControllers
+        .map((controller) => ChewieController(
+      videoPlayerController: controller,
+      autoPlay: false,
+      looping: false,
+    ))
+        .toList();
+    Future.wait(videoPlayerControllers
+        .map((controller) => controller.initialize()));
+    ///Video
     scrollController = ScrollController();
     scrollController.addListener(_scrollListener);
 
-    startTimer();
+    // startTimer();
     update();
     super.onInit();
   }

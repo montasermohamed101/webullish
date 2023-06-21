@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:webullish/controller/home/home_controller.dart';
+import 'package:webullish/view/pages/initial_screen.dart';
 
 import '../../../controller/edit_delete_controller/edit_profile_controller.dart';
 import '../../../utils/app_colors.dart';
@@ -29,7 +30,7 @@ class EditProfile extends StatelessWidget {
                 leading: IconButton(
                   icon: Image.asset('assets/images/back_arrow.png'),
                   onPressed: () {
-                    Navigator.pop(context);
+                  // Get.offAll(InitialScreen());
                   },
                 ),
                 elevation: 0,

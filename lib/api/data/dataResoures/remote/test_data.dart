@@ -15,4 +15,9 @@ class TestData {
     var response = await crud.getRequest('${AppLink.serverUrl}/${AppLink.performanceUrl}', headers);
     return response.fold((l) => l, (r) => r);
   }
+
+  getPerformanceData1() async {
+    var response = await crud.getRequest('${AppLink.serverUrl}/${AppLink.serverUrl}', headers);
+    return response.fold((l) => l, (r) => r);
+  }
 }

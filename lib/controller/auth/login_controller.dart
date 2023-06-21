@@ -21,6 +21,7 @@ class LoginController extends GetxController{
   }
   // var name;
   var id;
+
   login({required LoginModel model,required BuildContext context}) {
     postRequest(ApiConst.loginUrl, model.toJson()).then((value) async{
       // var response = LoginResponse.fromJson(value);

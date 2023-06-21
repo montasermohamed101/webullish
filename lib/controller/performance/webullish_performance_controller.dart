@@ -42,7 +42,28 @@ int? value ;
     }
  
   }
+  userGetData() async {
+    statusRequest = StatusRequest.loading;
+    var response = await testData.getPerformanceData();
+    print('========================respose');
+    print(response);
 
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      print('=============== check if condetion ===============');
+      performance.addAll(response);
+      performances = [performance.addAll(response)].toList();
+      print(performances);
+//       String percentage = performance['performance'][0]['target'];
+// int value = int.parse(percentage.replaceAll('%', ''));
+//   print(value);
+      update();
+
+      print('========================performance');
+      print(performance);
+    }
+
+  }
   @override
   void onInit() {
     checkInternet();

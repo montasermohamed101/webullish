@@ -7,6 +7,7 @@ import 'package:webullish/controller/home/home_controller.dart';
 import 'package:webullish/test_screen.dart';
 import 'package:webullish/view/pages/auth/login_screen.dart';
 import 'package:webullish/view/pages/auth/privacy_policy.dart';
+import 'package:webullish/view/pages/edit_delete/edit_profile.dart';
 import 'package:webullish/view/pages/home/home_screen.dart';
 import 'package:webullish/view/pages/initial_screen.dart';
 import 'package:webullish/view/pages/onboarding/onboarding_screen.dart';
@@ -14,6 +15,8 @@ import 'package:webullish/bindings/initail_Bindings.dart';
 
 import 'package:webullish/view/pages/perofrmance/performance_january.dart';
 import 'package:webullish/view/pages/perofrmance/webullish_performance.dart';
+
+import 'controller/edit_delete_controller/edit_profile_controller.dart';
 
 
 bool? onBoarding;
@@ -31,6 +34,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(EditProfileController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       builder: (context, child) {
@@ -51,13 +55,13 @@ class MyApp extends StatelessWidget {
           ],
         );
       },
-      home: onBoarding == true && accessToken != null && accessToken!.isNotEmpty
-          ? InitialScreen()
-          : onBoarding == true && (accessToken == null || accessToken!.isEmpty)
-          ? LoginScreen()
-          : OnBoardingScreen(),
-      // home: const PerformanceJanuary(),
-      // initialBinding: InitailBaindings(),
+      // home: onBoarding == true && accessToken != null && accessToken!.isNotEmpty
+      //     ? InitialScreen()
+      //     : onBoarding == true && (accessToken == null || accessToken!.isEmpty)
+      //     ? LoginScreen()
+      //     : OnBoardingScreen(),
+      home:  InitialScreen(),
+      initialBinding: InitailBaindings(),
     );
   }
 }
