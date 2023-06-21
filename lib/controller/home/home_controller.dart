@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +6,9 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
 import 'package:webullish/constants/api_links.dart';
-import 'package:webullish/services/api.dart';
 import 'package:webullish/model/users/user_model.dart';
 import 'package:webullish/view/pages/edit_delete/edit_profile.dart';
-
+import '../../services/api.dart';
 import '../../utils/app_colors.dart';
 import '../../view/pages/edit_delete/delete_account.dart';
 import '../../view/widgets/my_text.dart';
