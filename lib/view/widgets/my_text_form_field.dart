@@ -39,7 +39,7 @@ class MyTextFormField extends StatelessWidget {
       cursorColor: Colors.black,
       keyboardType: keyboardType,
       obscureText: obscureText!,
-      initialValue: initialValue,
+      initialValue: initialValue ?? null,
       textAlignVertical: TextAlignVertical.center,
       validator: (value) => validator(value),
       decoration: InputDecoration(

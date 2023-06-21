@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-// Future<Map<dynamic, dynamic>> postRequest(String url, Map map) async {
+// Future<Map<dynamic, dynamic>> getRequest(String url,) async {
 //   try {
-//     var response = await http.post(Uri.parse(url), body: json.encode(map), headers: {
+//     var response = await http.get(Uri.parse(url), headers: {
 //       "Content-type": "application/json",
 //       "Accept":"application/json",
 //     });

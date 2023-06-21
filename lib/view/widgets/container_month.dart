@@ -10,16 +10,20 @@ class Container_Month extends StatelessWidget {
   String textt;
   String texttt;
   Color color;
+  void Function()? onTap;
   Container_Month(
       {super.key,
-      required this.text,
-      required this.textt,
-      required this.texttt,
-      required this.color});
+        required this.text,
+        required this.textt,
+        required this.texttt,
+        required this.color,
+        required this.onTap,
+      });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 20.0),
       height: 275,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -29,7 +33,7 @@ class Container_Month extends StatelessWidget {
           ),
           color: AppColors.backPerformanceColor),
       child: Padding(
-        padding: const EdgeInsets.only(left: 17, right: 17),
+        padding: const EdgeInsets.only(left: 17, right: 17,),
         child: Column(children: [
           SizedBox(
             height: 30,
@@ -70,14 +74,17 @@ class Container_Month extends StatelessWidget {
                     Radius.circular(6),
                   ),
                   color: AppColors.ancientColor),
-              child: Center(
-                  child: Text(
-                'SEE RESULTS',
-                style: TextStyle(
-                    color: AppColors.whiteColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-              )),
+              child: InkWell(
+                onTap: onTap,
+                child: Center(
+                    child: Text(
+                      'SEE RESULTS',
+                      style: TextStyle(
+                          color: AppColors.whiteColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    )),
+              ),
             ),
           )
         ]),

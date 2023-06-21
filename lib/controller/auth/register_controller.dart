@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webullish/constants/api_links.dart';
 import 'package:webullish/model/auth_model/response/register_response.dart';
 import 'package:webullish/services/api.dart';
@@ -32,13 +33,16 @@ class RegisterController extends GetxController{
     isVisibility = !isVisibility;
     update();
   }
-
+  var id;
   sendToApi(RegisterModel model,BuildContext context){
-    postRequest(ApiConst.registerUrl, model.toJson()).then((value) {
+    postRequest(ApiConst.registerUrl, model.toJson()).then((value) async{
       var response = RegisterResponse.fromJson(value);
       print(value);
-      if(response.errors != null){
+      if(value['error'] == null){
         print('Success');
+        id = value["user"]['id'];
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await  prefs.setInt('id',id);
         Get.offAll(InitialScreen());
       }
       else{
@@ -47,7 +51,8 @@ class RegisterController extends GetxController{
           builder: (context) {
             return AlertDialog(
               title: Text('Registration failed'),
-              content: Text(response.message.toString()),
+              // content: Text(response.message.toString()),
+              content: Text('Account is Taken try new account'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
