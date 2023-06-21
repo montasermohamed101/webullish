@@ -1,22 +1,14 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
-import 'package:webullish/api/functions/check_internet.dart';
 import 'package:webullish/constants/api_links.dart';
-import 'package:webullish/model/magazine_model/magazine_model.dart';
-import 'package:webullish/model/top_notification_model/top_notification_model.dart';
-import 'package:webullish/services/api.dart';
 import 'package:webullish/model/users/user_model.dart';
 import 'package:webullish/view/pages/edit_delete/edit_profile.dart';
-
-import '../../api/class/status_request.dart';
-import '../../api/functions/handling_data_controller.dart';
-import '../../model/follow_us_model/follow_us_model.dart';
+import '../../services/api.dart';
 import '../../utils/app_colors.dart';
 import '../../view/pages/edit_delete/delete_account.dart';
 import '../../view/widgets/my_text.dart';
@@ -111,9 +103,8 @@ final List<String> socialName = [
   'twitter',
   'youtube',
   'instagram',
-  'linkedin',
+  'linked',
 ];
-
 final List<Color> socialColor = [
   AppColors.facebookBackground,
   AppColors.twitterBackground,
@@ -122,22 +113,6 @@ final List<Color> socialColor = [
   AppColors.linkedBackground,
 
 ];
-  // String? getLinkForIndex(FollowUsPagesModel followUpPage, int index) {
-  //   switch (index) {
-  //     case 0: // Facebook
-  //       return followUpPage.facebook;
-  //     case 1: // Twitter
-  //       return followUpPage.twitter;
-  //     case 2: // YouTube
-  //       return followUpPage.youtube;
-  //     case 3: // Instagram
-  //       return followUpPage.instagram;
-  //     case 4: // LinkedIn
-  //       return followUpPage.linkedin;
-  //     default:
-  //       return null;
-  //   }
-  // }
 
   final List<String> videoUrls = [
     'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
@@ -148,8 +123,6 @@ final List<Color> socialColor = [
   late List<VideoPlayerController> videoPlayerControllers;
   late List<ChewieController> chewieControllers;
 
-
-  late StatusRequest statusRequest;
 
   int? userId;
 
@@ -170,17 +143,17 @@ final List<Color> socialColor = [
 
     print('User ID: $id');
     // + '?id=$id'
-    statusRequest = StatusRequest.loading;
 
     final response = await getRequest(ApiConst.getUserUrl);
-    statusRequest = handlingData(response);
     print('Response: $response');
+
     if (response.containsKey('error')) {
       // Handle error
       print('Error: ${response['error']}');
     } else {
       final users = response['users'] as List<dynamic>;
       print('Users Montaser: $users');
+
       if (users.isNotEmpty) {
         final currentUserData = users.firstWhere((user) => user['id'] == id, orElse: () => null);
         if (currentUserData != null) {
@@ -188,7 +161,6 @@ final List<Color> socialColor = [
           print('User: ${currentUser.name}');
           print('User email: ${currentUser.email}');
           print('User id: ${currentUser.id}');
-          print('User id: ${currentUser.country}');
           // Update the UI with the current user
           update();
           // ...
@@ -201,70 +173,9 @@ final List<Color> socialColor = [
     }
   }
 
-  // TopNotificationModel topNotificationModel = TopNotificationModel();
-  // Future<void> getTopNotification() async {
-  //   final response = getRequest(ApiConst.getTopNotificationUrl);
-  //   topNotificationModel = TopNotificationModel.fromJson(topNotificationModel as Map<dynamic, dynamic>);
-  //   print('User: ${topNotificationModel.name}');
-  //
-  //
-  //   print(response);
-  // }
-
-  List<Notofocation> listNotifications = [];
-
-  Future<void> getTopNotification() async {
-    final response = await getRequest(ApiConst.getTopNotificationUrl);
-    if (response.containsKey('error')) {
-      print('Error: ${response['error']}');
-      return;
-    }
-    final topNotificationModel = TopNotificationModel.fromJson(response);
-    listNotifications = topNotificationModel.notofocations;
-    update();
-    print(listNotifications.length);
-    update();
-  }
-
-  // var followUpPages = <FollowUsPagesModel>[];
-  //
-  // Future<void> getFollowUsPages() async {
-  //   final response = await getRequest(ApiConst.getTopNotificationUrl);
-  //   if (response.containsKey('error')) {
-  //     print('Error: ${response['error']}');
-  //     return;
-  //   }
-  //
-  //   final followUsPagesModel = FollowUsPagesModel.fromJson(response);
-  //   followUpPages.add(followUsPagesModel);
-  //   print(followUpPages.length);
-  //   update();
-  // }
 
 
-  // var followUpPages = <FollowUsPagesModel>[];
-  Future<List<FollowUsPagesModel>> getFollowUsPages() async {
-    final response = await getRequest(ApiConst.getFollowUsPageUrl);
-    if (response.containsKey('error')) {
-      throw Exception('API Error: ${response['error']}');
-    }
-    print('===============================================================');
-    final followUpPagesJson = response['follow_up_pages'] as List<dynamic>;
-    return followUpPagesJson.map((json) => FollowUsPagesModel.fromJson(json)).toList();
-  }
 
-  // Future<void> getFollowUsPages() async {
-  //   final response = await getRequest(ApiConst.getFollowUsPageUrl);
-  //   if (response.containsKey('error')) {
-  //     print('Error: ${response['error']}');
-  //     return;
-  //   }
-  //   final followUpPagesJson = response['follow_up_pages'] as List<dynamic>;
-  //   followUpPages = followUpPagesJson.map((json) => FollowUsPagesModel.fromJson(json)).toList();
-  //   // print('Follow up pages ${followUpPages[0].facebook}');
-  //
-  //   update();
-  // }
 
 
 
@@ -287,23 +198,22 @@ final List<Color> socialColor = [
   //   print('Response: $response');
   // }
 
-  String greeting = '';
-  void _setGreeting() {
-    DateTime now = DateTime.now();
-    int hour = now.hour;
-    if (hour < 12) {
-      greeting = 'Good Morning';
-    } else {
-      greeting = 'Good Evening';
-    }
-  }
 
 
 
-  ScrollController scrollController = ScrollController();
+
+
+
+  final List<String> newsItems = [
+    'Breaking News: Flutter app reaches 1 million downloads!',
+    'New feature added to the app. Check it out now!',
+    'Upcoming event: Flutter conference on June 15th.',
+    'Special offer: Get 50% off on all premium features.',
+  ];
+  final ScrollController scrollController = ScrollController();
   Timer? timer;
   double scrollSpeed = 50.0;
-  void startTimer() {
+  void _startTimer() {
     timer = Timer.periodic(const Duration(milliseconds: 300), (_) {
       if (scrollController.position.maxScrollExtent == scrollController.offset) {
         scrollController.jumpTo(0.0);
@@ -315,57 +225,26 @@ final List<Color> socialColor = [
         );
       }
     });
-    update();
   }
 
+  String greeting = '';
   void stopTimer() {
     timer?.cancel();
   }
-  List<Magazine> magazineModel = [];
-
-  fetchMagazine2() async {
-    try {
-      final response = await http.get(Uri.parse(ApiConst.getMagazineUrl));
-      if (response.statusCode == 200) {
-        final magazineList = magazineModelFromJson(response.body);
-        magazineModel = magazineList.magazines;
-        print('Magazine Items: $magazineModel');
-      } else {
-        print('Error: Failed to fetch magazines. Status code: ${response.statusCode}');
-      }
-    } catch (e) {
-      print('Error: $e');
+  void _setGreeting() {
+    DateTime now = DateTime.now();
+    int hour = now.hour;
+    if (hour < 12) {
+      greeting = 'Good Morning';
+    } else {
+      greeting = 'Good Evening';
     }
-    update();
   }
-
-  fetchMagazine() async {
-    try {
-      final response = await getRequest(ApiConst.getMagazineUrl);
-      if (response['error'] == null) {
-        final magazineList = MagazineModel.fromJson(response);
-        magazineModel = magazineList.magazines;
-        print('Magazine Items: $magazineModel');
-      } else {
-        print('Error: Failed to fetch magazines. Error: ${response['error']}');
-      }
-    } catch (e) {
-      print('Error: $e');
-    }
-    update();
-  }
-
-
   @override
   void onInit() {
-    fetchMagazine();
-   checkInternet();
     _setGreeting();
     getCurrentUser();
-
-    getTopNotification();
-    getFollowUsPages();
-    ///Video
+    //Video
     videoPlayerControllers =
         videoUrls.map((url) => VideoPlayerController.network(url)).toList();
     chewieControllers = videoPlayerControllers
@@ -377,40 +256,25 @@ final List<Color> socialColor = [
         .toList();
     Future.wait(videoPlayerControllers
         .map((controller) => controller.initialize()));
-    ///Video
-    scrollController = ScrollController();
-    scrollController.addListener(_scrollListener);
-
-    // startTimer();
+    //Video
     update();
+    _startTimer();
     super.onInit();
-  }
-  bool isScrolling = false;
-
-  void _scrollListener() {
-    if (scrollController.hasClients && !isScrolling) {
-      isScrolling = true;
-      startTimer();
-    } else if (!scrollController.hasClients && isScrolling) {
-      isScrolling = false;
-      stopTimer();
-    }
   }
   @override
   void onClose() {
     stopTimer();
-    scrollController.removeListener(_scrollListener);
     scrollController.dispose();
     super.onClose();
   }
-  // @override
-  // void dispose() {
-  //   //Video
-  //     videoPlayerControllers.forEach((controller) => controller.dispose());
-  //     chewieControllers.forEach((chewieController) => chewieController.dispose());
-  //   //Video
-  //   stopTimer();
-  //   super.dispose();
-  // }
-
+  @override
+  void dispose() {
+    //Video
+      videoPlayerControllers.forEach((controller) => controller.dispose());
+      chewieControllers.forEach((chewieController) => chewieController.dispose());
+    //Video
+    stopTimer();
+    scrollController.dispose();
+    super.dispose();
+  }
 }
