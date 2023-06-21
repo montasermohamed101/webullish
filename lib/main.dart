@@ -11,7 +11,11 @@ import 'package:webullish/view/pages/edit_delete/edit_profile.dart';
 import 'package:webullish/view/pages/home/home_screen.dart';
 import 'package:webullish/view/pages/initial_screen.dart';
 import 'package:webullish/view/pages/onboarding/onboarding_screen.dart';
+
 import 'package:webullish/bindings/initail_Bindings.dart';
+import 'package:webullish/view/pages/alert/alert_screen.dart';
+import 'package:webullish/view/pages/faq/faq.dart';
+import 'package:webullish/view/pages/home/home_screen.dart';
 
 import 'package:webullish/view/pages/perofrmance/performance_january.dart';
 import 'package:webullish/view/pages/perofrmance/webullish_performance.dart';
