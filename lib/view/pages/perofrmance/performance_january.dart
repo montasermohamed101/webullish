@@ -100,43 +100,47 @@ class PerformanceJanuary extends StatelessWidget {
                           const SizedBox(
                             height: 12,
                           ),
-                          SizedBox(
-                            // height: 600.0,
-                            child: Padding(
-                              padding:
-                              const EdgeInsets.only(bottom: 10.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container_Performance(
-                                    colortext: AppColors.ancientColor,
-                                    text: "${controller.sympol}",
-                                    color: AppColors.backPerformanceColor,
-                                  ),
-                                  Container_Performance(
-                                    colortext: AppColors.ancientColor,
-                                    text: "${controller.reached}",
-                                    color: AppColors.backPerformanceColor,
-                                  ),
-                                  // controller.performance['performances'][index]['target'] == null? const CircularProgressIndicator():
-                                  Container_Performance(
-                                    colortext: AppColors.whiteColor,
-                                    text: "${controller.target}",
-                                    color: int.parse(
-                                        "${controller.target}"
-                                            .replaceAll(
-                                            '%', '')) <=
-                                        9
-                                        ? AppColors.redColor
-                                        : AppColors.greenColor,
-                                  ),
-                                  Container_Performance(
-                                    colortext: AppColors.ancientColor,
-                                    text: "${controller.comment}",
-                                    color: AppColors.backPerformanceColor,
-                                  ),
-                                ],
+                          HandlingDataView(
+                            statusRequest: controller.statusRequest,
+                            widget:controller.performance.isEmpty?CircularProgressIndicator()
+                            : SizedBox(
+                              // height: 600.0,
+                              child: Padding(
+                                padding:
+                                const EdgeInsets.only(bottom: 10.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container_Performance(
+                                      colortext: AppColors.ancientColor,
+                                      text: "${controller.sympol}",
+                                      color: AppColors.backPerformanceColor,
+                                    ),
+                                    Container_Performance(
+                                      colortext: AppColors.ancientColor,
+                                      text: "${controller.reached}",
+                                      color: AppColors.backPerformanceColor,
+                                    ),
+                                    // controller.performance['performances'][index]['target'] == null? const CircularProgressIndicator():
+                                    Container_Performance(
+                                      colortext: AppColors.whiteColor,
+                                      text: "${controller.target}",
+                                      color: int.parse(
+                                          "${controller.target}"
+                                              .replaceAll(
+                                              '%', '')) <=
+                                          9
+                                          ? AppColors.redColor
+                                          : AppColors.greenColor,
+                                    ),
+                                    Container_Performance(
+                                      colortext: AppColors.ancientColor,
+                                      text: "${controller.comment}",
+                                      color: AppColors.backPerformanceColor,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -312,27 +316,32 @@ class PerformanceJanuary extends StatelessWidget {
                                 const SizedBox(
                                   height: 18,
                                 ),
-                                SliderTheme(
-                                  data: SliderTheme.of(context).copyWith(
-                                    activeTrackColor: AppColors.greenColor,
-                                    inactiveTrackColor:AppColors.redColor ,
-                                    thumbColor: controller.rateSuccessInt > controller.rateFailInt? AppColors.greenColor:AppColors.redColor,
-                                    trackHeight: 20.0,
-
-                                  ),
-                                  child: Slider(
-                                    max: 100,
-
-                                    value: controller.rateSuccessInt
-                                        .toDouble(),
-                                    onChanged: (value) {},
+                                HandlingDataView(
+                                  statusRequest: controller.statusRequest,
+                                  widget: controller.performance.isEmpty?CircularProgressIndicator(): SliderTheme(
+                                    data: SliderTheme.of(context).copyWith(
+                                      activeTrackColor: AppColors.greenColor,
+                                      inactiveTrackColor:AppColors.redColor ,
+                                      thumbColor: controller.rateSuccessInt > controller.rateFailInt? AppColors.greenColor:AppColors.redColor,
+                                      trackHeight: 20.0,
+                                
+                                    ),
+                                    child: Slider(
+                                      max: 100,
+                                
+                                      value: controller.rateSuccessInt
+                                          .toDouble(),
+                                      onChanged: (value) {},
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(
                                   height: 10,
                                 ),
 
-                                SizedBox(
+                                HandlingDataView(
+                                  statusRequest: controller.statusRequest,
+                                  widget: controller.performance.isEmpty?CircularProgressIndicator():SizedBox(
                                     height: 300.0,
                                     child: LineChart(
                                       LineChartData(
@@ -389,7 +398,7 @@ class PerformanceJanuary extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                    )),
+                                    )),),
                                 const SizedBox(
                                   height: 10,
                                 ),
