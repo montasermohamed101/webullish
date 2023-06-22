@@ -15,11 +15,7 @@ class PerformanceJanuary extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<WebullishPerformanceController>(
       init: WebullishPerformanceController(),
-      builder: (controller) => HandlingDataView(
-        statusRequest: controller.statusRequest,
-        widget: controller.performance.length != null
-            ? const CircularProgressIndicator()
-            : Scaffold(
+      builder: (controller) =>  Scaffold(
           backgroundColor: AppColors.primaryColor,
           body: Padding(
             padding: const EdgeInsets.only(top: 63),
@@ -405,7 +401,6 @@ class PerformanceJanuary extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }
