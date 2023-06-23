@@ -12,7 +12,7 @@ class TestData {
           };
 
   getPerformanceData() async {
-    var response = await crud.getRequest('${AppLink.serverUrl}/${AppLink.performanceUrl}', headers);
+    var response = await crud.getRequest('${ApiConst.baseUrl}/${ApiConst.performanceUrl}', headers);
     return response.fold((l) => l, (r) => r);
   }
 

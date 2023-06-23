@@ -122,7 +122,7 @@ class PerformanceJanuary extends StatelessWidget {
                                       text: "${controller.reached}",
                                       color: AppColors.backPerformanceColor,
                                     ),
-                                    // controller.performance['performances'][index]['target'] == null? const CircularProgressIndicator():
+                              
                                     Container_Performance(
                                       colortext: AppColors.whiteColor,
                                       text: "${controller.target}",

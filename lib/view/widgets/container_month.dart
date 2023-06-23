@@ -36,7 +36,7 @@ class Container_Month extends StatelessWidget {
         padding: const EdgeInsets.only(left: 17, right: 17,),
         child: Column(children: [
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           Text(
             text,
@@ -44,7 +44,7 @@ class Container_Month extends StatelessWidget {
                 color: color, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           SizedBox(
-            height: 40,
+            height: 30,
           ),
           Text(
             textt,
@@ -52,7 +52,7 @@ class Container_Month extends StatelessWidget {
                 color: color, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           SizedBox(
-            height: 40,
+            height: 30,
           ),
           Text(
             texttt,

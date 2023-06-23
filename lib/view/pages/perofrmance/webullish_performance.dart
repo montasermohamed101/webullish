@@ -18,69 +18,68 @@ class Webullish_Performance extends StatelessWidget {
       init: WebullishPerformanceController(),
       builder:(controller) => Scaffold(
             backgroundColor: AppColors.primaryColor,
-            body: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 45, right: 45),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 63, bottom: 30.0),
-                      child: Center(
-                        child: Text(
-                          'Webullish Performance',
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.ancientColor),
-                        ),
-                      ),
-                    ),
-                    Text(
-                      'Monthly Performance',
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.ancientColor),
-                    ),
-                    const SizedBox(
-                      height: 18,
-                    ),
-                    Text(
-                      'We have made it easier than ever to\naccess our many invaluable reports!\ncheck them all out here, broken down into monthly categories.',
-                      style: TextStyle(fontSize: 17, color: AppColors.whiteColor),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                     HandlingDataView(
-                      statusRequest: controller.statusRequest,
-                       widget:controller.performance.isEmpty ?const CircularProgressIndicator()
-                        : SizedBox(
-                        height: 650.0,
-                        child:ListView.builder(
-                          itemCount:
-                          controller.performance['performances'].length,
-                          itemBuilder: (context, index) => Container_Month(
-                            onTap: () {
-                              controller.update();
-                              controller.upDataCounter(index);
-                              Get.to(
-                                    () =>  const PerformanceJanuary(),
-                              );
-                            },
-                            color: AppColors.ancientColor,
-                            text: controller.performance['performances']
-                            [index]['month'],
-                            textt:
-                            'Performance ${controller.performance['performances'][index]['month']}',
-                            texttt:
-                            'Here you will find all of our\n  analyzes for this month',
+            body: SingleChildScrollView(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 45, right: 45),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 63, bottom: 30.0),
+                        child: Center(
+                          child: Text(
+                            'Webullish Performance',
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.ancientColor),
                           ),
                         ),
-                                         ),
-                     ),
-                  ],
+                      ),
+                      Text(
+                        'Monthly Performance',
+                        style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.ancientColor),
+                      ),
+                      const SizedBox(
+                        height: 18,
+                      ),
+                      Text(
+                        'We have made it easier than ever to\naccess our many invaluable reports!\ncheck them all out here, broken down into monthly categories.',
+                        style: TextStyle(fontSize: 17, color: AppColors.whiteColor),
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      SizedBox(
+                          height: 650.0,
+                          child:ListView.builder(
+                            itemCount:controller.monthFullName.length,
+                            itemBuilder: (context, index) => Container_Month(
+                              onTap: () {
+                                controller.update();
+                                controller.upDataCounter(index);
+                                Get.to(
+                                      () =>  const PerformanceJanuary(),
+                                );
+                              },
+                              color: AppColors.ancientColor,
+                              text: controller.monthFullName[index],
+                              textt:
+                              'Performance ${controller.monthShortName[index]}',
+                              texttt:
+                              'Here you will find all of our\n  analyzes for this month',
+                            ),
+                          ),
+                      ),
+                      const SizedBox(
+                        height: 60,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

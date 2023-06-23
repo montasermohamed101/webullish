@@ -7,10 +7,10 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
 import 'package:webullish/api/functions/check_internet.dart';
-import 'package:webullish/constants/api_links.dart';
+import 'package:webullish/api/link/link_api.dart';
 import 'package:webullish/model/magazine_model/magazine_model.dart';
 import 'package:webullish/model/top_notification_model/top_notification_model.dart';
-import 'package:webullish/services/api.dart';
+import 'package:webullish/api/services/api.dart';
 import 'package:webullish/model/users/user_model.dart';
 import 'package:webullish/view/pages/edit_delete/edit_profile.dart';
 

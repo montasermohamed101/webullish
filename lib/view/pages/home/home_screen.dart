@@ -15,11 +15,10 @@ import 'package:webullish/view/widgets/home_widgets/color_container.dart';
 import 'package:webullish/view/widgets/my_text.dart';
 
 import '../../../api/class/handling_data_view.dart';
-import '../../../constants/api_links.dart';
 import '../../../controller/home/home_controller.dart';
 import '../../../model/follow_us_model/follow_us_model.dart';
 import '../../../model/magazine_model/magazine_model.dart';
-import '../../../services/api.dart';
+import '../../../api/services/api.dart';
 import '../../widgets/home_widgets/analytics_container.dart';
 import '../../widgets/home_widgets/team_container.dart';
 
