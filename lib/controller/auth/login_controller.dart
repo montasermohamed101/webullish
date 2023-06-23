@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webullish/constants/api_links.dart';
-import 'package:webullish/services/api.dart';
+import 'package:webullish/api/link/link_api.dart';
+import 'package:webullish/api/services/api.dart';
 
 import '../../model/auth_model/request/login_model.dart';
 import '../../model/auth_model/response/login_response.dart';

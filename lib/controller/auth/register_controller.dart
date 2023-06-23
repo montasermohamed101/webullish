@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webullish/constants/api_links.dart';
+import 'package:webullish/api/link/link_api.dart';
 import 'package:webullish/model/auth_model/response/register_response.dart';
-import 'package:webullish/services/api.dart';
+import 'package:webullish/api/services/api.dart';
 import 'package:webullish/view/pages/initial_screen.dart';
 import 'package:webullish/view/widgets/my_text.dart';
 
