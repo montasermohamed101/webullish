@@ -67,24 +67,27 @@ class WebullishPerformanceController extends GetxController {
 
   upDataCounter(int index) {
     month = monthFullName[index];
-    // target = performance['performances'][index]['target'];
-    // reached = performance['performances'][index]['reached'];
-    // comment = performance['performances'][index]['comment'];
-    // sympol = performance['performances'][index]['sympol'];
-    // if (int.parse(target!.replaceAll('%', '')) <= 9) {
-    //   countFail++;
-    //   rateFail = ((countFail + countSuccess) / countFail) * 100;
-    //   rateFailInt = rateFail.toInt();
-    //   percenDoubleFail = double.parse(target!.replaceAll('%', ''));
-    // } else {
-    //   countSuccess++;
-    //   rateSuccess = ((countFail + countSuccess) / countSuccess) * 100;
-    //   rateSuccessInt = rateSuccess.toInt();
-    //   percenDoubleSucc = double.parse(target!.replaceAll('%', ''));
-    // }
+    if (performance.isNotEmpty) {
+      target = performance['performances'][index]['target'];
+    reached = performance['performances'][index]['reached'];
+    comment = performance['performances'][index]['comment'];
+    sympol = performance['performances'][index]['sympol'];
+    if (int.parse(target!.replaceAll('%', '')) <= 9) {
+      countFail++;
+      rateFail = ((countFail + countSuccess) / countFail) * 100;
+      rateFailInt = rateFail.toInt();
+      percenDoubleFail = double.parse(target!.replaceAll('%', ''));
+    } else {
+      countSuccess++;
+      rateSuccess = ((countFail + countSuccess) / countSuccess) * 100;
+      rateSuccessInt = rateSuccess.toInt();
+      percenDoubleSucc = double.parse(target!.replaceAll('%', ''));
+    }
     update();
     print(target);
     print(percenDoubleSucc);
+    }
+    update();
   }
 
   @override
